@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "DBConnect.h"
 
 
 // CTab2 대화 상자
@@ -18,7 +19,16 @@ public:
 #endif
 
 protected:
+	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+public:
+	CDBConnect DB;
+	CEdit m_Score;
+	CListCtrl m_ListCtrl;
+	afx_msg void OnLvnItemchangedListctrl2(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnBnClickedBtnSelectshow();
+	afx_msg void OnBnClickedBtnSelectreview();
+	afx_msg void OnLvnItemchangedListReview(NMHDR* pNMHDR, LRESULT* pResult);
 };

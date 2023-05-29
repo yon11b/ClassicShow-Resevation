@@ -61,12 +61,16 @@ void CSelectDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_TAB1, m_Tab);
+	MessageBox("FFFFFF");
 }
 
 
 BEGIN_MESSAGE_MAP(CSelectDlg, CDialogEx)
+	
 	ON_LBN_SELCHANGE(IDC_LISTCTRL, &CSelectDlg::OnLbnSelchangeList1)
+	
 	ON_NOTIFY(TCN_SELCHANGE, IDC_TAB1, &CSelectDlg::OnTcnSelchangeTab1)
+	
 END_MESSAGE_MAP()
 
 

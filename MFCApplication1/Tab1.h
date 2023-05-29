@@ -26,8 +26,7 @@ protected:
 public:
 	CDBConnect DB;
 	CListCtrl m_ListCtrl;
-	afx_msg void OnLvnItemchangedListctrl(NMHDR* pNMHDR, LRESULT* pResult);
-	afx_msg void OnBnClickedBtnSelectshow();
 	CDateTimeCtrl m_DateStart;
 	CDateTimeCtrl m_DateFinish;
+	afx_msg void OnBnClickedBtnSelectshow();
 };
