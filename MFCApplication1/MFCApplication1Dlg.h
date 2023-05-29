@@ -5,6 +5,7 @@
 #pragma once
 #include "SignupDlg.h"
 #include "SelectDlg.h"
+#include "MainDlg.h"
 
 // CMFCApplication1Dlg 대화 상자
 class CMFCApplication1Dlg : public CDialogEx
@@ -34,7 +35,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CSignupDlg SignupDlg;
-	CSelectDlg SelectDlg;
+	CMainDlg MainDlg;
 	afx_msg void OnBnClickedSignup();
 	afx_msg void OnBnClickedLogin();
 
@@ -42,4 +43,5 @@ public:
 	CEdit m_LoginId;
 	CEdit m_LoginPw;
 	afx_msg void OnBnClickedFin();
+	afx_msg void OnStnClickedTitle();
 };

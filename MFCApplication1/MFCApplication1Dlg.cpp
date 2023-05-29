@@ -73,6 +73,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_SIGNUP, &CMFCApplication1Dlg::OnBnClickedSignup)
 	ON_BN_CLICKED(IDC_LOGIN, &CMFCApplication1Dlg::OnBnClickedLogin)
 	ON_BN_CLICKED(IDC_FIN, &CMFCApplication1Dlg::OnBnClickedFin)
+	ON_STN_CLICKED(IDS_TITLE, &CMFCApplication1Dlg::OnStnClickedTitle)
 END_MESSAGE_MAP()
 
 
@@ -202,8 +203,11 @@ void CMFCApplication1Dlg::OnBnClickedLogin()
 			SQLGetData(hStmt, 1, SQL_C_LONG, &count, sizeof(count), NULL);
 			if (count == 1) {
 				// COUNT(*) 값이 1인 경우(계정 존재)
-				MessageBox("로그인에 성공했습니다.");
-				SelectDlg.DoModal();
+				MessageBox("로그인에 성공했습니다.");				
+				MainDlg.DoModal();
+				SQLCloseCursor(hStmt);
+				SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
+				DB.db_disconnect();
 			}
 			else {
 				// COUNT(*) 값이 1인 아닌 경우
@@ -214,9 +218,6 @@ void CMFCApplication1Dlg::OnBnClickedLogin()
 			// SQL 쿼리 실행에 실패한 경우
 			MessageBox("정상적인 입력이 아닙니다.");
 		}
-		SQLCloseCursor(hStmt);
-		SQLFreeHandle(SQL_HANDLE_STMT, hStmt);		
-		DB.db_disconnect();
 	}
 }
 
@@ -226,4 +227,10 @@ void CMFCApplication1Dlg::OnBnClickedFin()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	MessageBox("DB CLOSE!");
 	CDialog::OnCancel();
+}
+
+
+void CMFCApplication1Dlg::OnStnClickedTitle()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }

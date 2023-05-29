@@ -8,13 +8,13 @@
 #define IDD_MFCAPPLICATION1_DIALOG      102
 #define IDR_MAINFRAME                   128
 #define IDD_SIGNUP                      130
-#define IDD_SELECT                        134
 #define IDD_SELECT                      134
 #define IDD_DIALOG1                     136
 #define IDD_DIALOG2                     137
 #define IDD_DIALOG3                     138
 #define IDD_SEAT_SAC_CONCERT            142
 #define IDD_DIALOG4                     144
+#define IDD_MAIN                        146
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -35,14 +35,24 @@
 #define IDC_SEAT_GROUP                  1014
 #define IDC_CHECK1                      1015
 #define IDC_BUTTON1                     1016
+#define IDC_SELECT_QUERY                1018
+#define IDC_INSERT_QUERY                1019
+#define IDC_DELETE_QUERY                1020
+#define IDC_UPDATE_QUERY                1021
+#define IDC_CUSTOM_QUERY                1022
+#define IDC_SCHEMA_CHECK                1023
+#define IDC_DATE_START                  1025
+#define IDC_DATEFINISH                  1026
+#define IDC_DATE_FINISH                 1026
+#define IDC_BTN_SELECTSHOW              1027
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        146
+#define _APS_NEXT_RESOURCE_VALUE        148
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1018
+#define _APS_NEXT_CONTROL_VALUE         1028
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
