@@ -1,0 +1,22 @@
+﻿  MainDlg.cpp
+  SelectDlg.cpp
+  Tab1.cpp
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(47,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(48,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(49,74): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(50,74): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(51,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(82,33): warning C4477: 'sprintf_s' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'CString'입니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab1.cpp(82,33): warning C4477: 'sprintf_s' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'CString'입니다.
+  Tab2.cpp
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(48,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(49,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(50,74): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(51,68): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(52,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(53,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(54,71): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(55,77): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\Tab2.cpp(93,33): warning C4477: 'sprintf_s' : 서식 문자열 '%s'에 'char *' 형식의 인수가 필요하지만 variadic 인수 1의 형식이 'CString'입니다.
+  코드를 생성하고 있습니다...
+  MFCApplication1.vcxproj -> D:\OneDrive - Sejong University\학교\3-1\데이터베이스\과제\프로젝트\code\MFCApplication1\x64\Debug\MFCApplication1.exe
