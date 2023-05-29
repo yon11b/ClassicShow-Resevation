@@ -84,7 +84,6 @@ void CTab2::OnBnClickedBtnSelectreview()
 	if (DB.db_connect()) {
 		MessageBox("DB CONEECT!");
 
-
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
@@ -120,7 +119,6 @@ void CTab2::OnBnClickedBtnSelectreview()
 				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)hallname, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)roomname, NULL, NULL, NULL, NULL);
-
 				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)seatnum, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 5, LVIF_TEXT, (CString)sound, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 6, LVIF_TEXT, (CString)view, NULL, NULL, NULL, NULL);
@@ -132,9 +130,8 @@ void CTab2::OnBnClickedBtnSelectreview()
 		DB.db_disconnect();
 	}
 	else {
-		MessageBox("공연 정보를 불러오는데 실패했습니다.");
+		MessageBox("리뷰 정보를 불러오는데 실패했습니다.");
 	}
-	MessageBox("zzz");
 }
 
 

@@ -3,9 +3,11 @@
 //
 
 #pragma once
+#include "DBConnect.h"
 #include "SignupDlg.h"
 #include "SelectDlg.h"
 #include "MainDlg.h"
+#include "Session.h"
 
 // CMFCApplication1Dlg 대화 상자
 class CMFCApplication1Dlg : public CDialogEx

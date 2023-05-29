@@ -10,13 +10,13 @@
 #include "SignupDlg.h"
 #include "DBConnect.h"
 #include "SelectDlg.h"
-
+#include "Session.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-
+extern CSESSION SESSION;  // 전역 객체 선언
 // 응용 프로그램 정보에 사용되는 CAboutDlg 대화 상자입니다.
 
 class CAboutDlg : public CDialogEx
@@ -109,6 +109,7 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	
 	if (DB.db_connect()) {
 		MessageBox("DB CONEECT!");
 	}
@@ -168,7 +169,6 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
 void CMFCApplication1Dlg::OnBnClickedSignup()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -203,7 +203,10 @@ void CMFCApplication1Dlg::OnBnClickedLogin()
 			SQLGetData(hStmt, 1, SQL_C_LONG, &count, sizeof(count), NULL);
 			if (count == 1) {
 				// COUNT(*) 값이 1인 경우(계정 존재)
-				MessageBox("로그인에 성공했습니다.");				
+				MessageBox("로그인에 성공했습니다.");
+				SESSION.userId = loginid;
+				SESSION.userPw = loginpw;
+				MessageBox(SESSION.userId,_T("USERID"));
 				MainDlg.DoModal();
 				SQLCloseCursor(hStmt);
 				SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

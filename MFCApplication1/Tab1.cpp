@@ -63,7 +63,6 @@ void CTab1::OnBnClickedBtnSelectshow()
 	if (DB.db_connect()) {
 		MessageBox("DB CONEECT!");
 
-
 		COleDateTime getStartDate;
 		m_DateStart.GetTime(getStartDate);
 		COleDateTime startDate(getStartDate.GetYear(), getStartDate.GetMonth(), getStartDate.GetDay(), 0, 0, 0);

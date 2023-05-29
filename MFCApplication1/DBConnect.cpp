@@ -16,10 +16,9 @@ CDBConnect::CDBConnect() {
 bool CDBConnect::db_connect()
 {
 	SQLRETURN Ret;
-	
 	// Allocate the Environment Handle (hEnv)
 	if (SQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &hEnv) != SQL_SUCCESS)
-	{ 
+	{
 		return false;
 	}
 

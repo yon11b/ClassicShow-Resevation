@@ -48,6 +48,10 @@
 #define IDC_LIST_REVIEW                 1028
 #define IDC_EDIT1                       1029
 #define IDC_BTN_SELECTREVIEW            1030
+#define IDC_BTN_SELECTASCENDING         1031
+#define IDC_BTN_SELECTASC               1031
+#define IDC_LIST_RESERVE                1032
+#define IDC_BTN_SELECTDESC              1033
 
 // Next default values for new objects
 // 
@@ -55,7 +59,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        150
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1031
+#define _APS_NEXT_CONTROL_VALUE         1034
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
