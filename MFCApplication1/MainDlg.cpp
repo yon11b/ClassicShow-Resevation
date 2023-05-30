@@ -8,6 +8,7 @@
 #include "SelectDlg.h"
 #include "InsertDlg.h"
 #include "UpdateDlg.h"
+#include "DeleteDlg.h"
 
 
 // CMainDlg 대화 상자
@@ -35,6 +36,7 @@ BEGIN_MESSAGE_MAP(CMainDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_SELECT_QUERY, &CMainDlg::OnBnClickedSelectQuery)
 	ON_BN_CLICKED(IDC_INSERT_QUERY, &CMainDlg::OnBnClickedInsertQuery)
 	ON_BN_CLICKED(IDC_UPDATE_QUERY, &CMainDlg::OnBnClickedUpdateQuery)
+	ON_BN_CLICKED(IDC_DELETE_QUERY, &CMainDlg::OnBnClickedDeleteQuery)
 END_MESSAGE_MAP()
 
 
@@ -65,4 +67,11 @@ void CMainDlg::OnBnClickedUpdateQuery()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	UpdateDlg.DoModal();
+}
+
+
+void CMainDlg::OnBnClickedDeleteQuery()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	DeleteDlg.DoModal();
 }
