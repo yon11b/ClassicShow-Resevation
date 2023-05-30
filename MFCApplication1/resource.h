@@ -19,9 +19,10 @@
 #define IDD_INSERT_DLG2                 152
 #define IDD_INSERT_DLG3                 154
 #define IDD_INSERT_DLG1                 156
-#define IDD_UPDATE_DLG1                 158
-#define IDD_DIALOG6                     159
-#define IDD_UPDATE_DLG2                 159
+#define IDD_UPDATE                      166
+#define IDD_UPDATE_DLG1                 167
+#define IDD_UPDATE_DLG2                 169
+#define IDD_UPDATE_DLG3                 170
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -42,6 +43,7 @@
 #define IDC_SEAT_GROUP                  1014
 #define IDC_CHECK1                      1015
 #define IDC_BUTTON1                     1016
+#define IDC_BUTTON2                     1017
 #define IDC_SELECT_QUERY                1018
 #define IDC_INSERT_QUERY                1019
 #define IDC_DELETE_QUERY                1020
@@ -74,14 +76,15 @@
 #define IDC_DATETIMEPICKER4             1047
 #define IDC_DATETIMEPICKER5             1048
 #define IDC_EDIT10                      1049
+#define IDC_LIST2                       1058
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        162
+#define _APS_NEXT_RESOURCE_VALUE        174
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1052
+#define _APS_NEXT_CONTROL_VALUE         1059
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -2,7 +2,7 @@
 #include "afxdialogex.h"
 #include "SelectDlg.h"
 #include "InsertDlg.h"
-
+#include "UpdateDlg.h"
 
 // CMainDlg 대화 상자
 
@@ -26,6 +26,7 @@ protected:
 public:
 	CSelectDlg SelectDlg;
 	CInsertDlg InsertDlg;
+	CUpdateDlg UpdateDlg;
 	afx_msg void OnBnClickedSchemaCheck();
 	afx_msg void OnBnClickedSelectQuery();
 	afx_msg void OnBnClickedInsertQuery();

@@ -7,6 +7,7 @@
 #include "MainDlg.h"
 #include "SelectDlg.h"
 #include "InsertDlg.h"
+#include "UpdateDlg.h"
 
 
 // CMainDlg 대화 상자
@@ -63,5 +64,5 @@ void CMainDlg::OnBnClickedInsertQuery()
 void CMainDlg::OnBnClickedUpdateQuery()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-
+	UpdateDlg.DoModal();
 }
