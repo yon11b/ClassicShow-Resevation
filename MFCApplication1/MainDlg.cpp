@@ -6,6 +6,7 @@
 #include "afxdialogex.h"
 #include "MainDlg.h"
 #include "SelectDlg.h"
+#include "InsertDlg.h"
 
 
 // CMainDlg 대화 상자
@@ -31,6 +32,8 @@ void CMainDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CMainDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_SCHEMA_CHECK, &CMainDlg::OnBnClickedSchemaCheck)
 	ON_BN_CLICKED(IDC_SELECT_QUERY, &CMainDlg::OnBnClickedSelectQuery)
+	ON_BN_CLICKED(IDC_INSERT_QUERY, &CMainDlg::OnBnClickedInsertQuery)
+	ON_BN_CLICKED(IDC_UPDATE_QUERY, &CMainDlg::OnBnClickedUpdateQuery)
 END_MESSAGE_MAP()
 
 
@@ -47,4 +50,18 @@ void CMainDlg::OnBnClickedSelectQuery()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SelectDlg.DoModal();
+}
+
+
+void CMainDlg::OnBnClickedInsertQuery()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	InsertDlg.DoModal();
+}
+
+
+void CMainDlg::OnBnClickedUpdateQuery()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+
 }
