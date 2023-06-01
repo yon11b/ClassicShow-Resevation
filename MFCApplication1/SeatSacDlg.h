@@ -27,7 +27,5 @@ protected:
 public:
 	CDBConnect DB;
 	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
-	afx_msg void OnBnClickedButton1();
-	afx_msg void OnBnClickedButton114();
 	afx_msg void OnBtnClick(UINT ullD);
 };
