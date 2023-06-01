@@ -56,6 +56,7 @@ void CInsertTab1::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CInsertTab1, CDialogEx)
 	ON_CBN_SELCHANGE(IDC_COMBO1, &CInsertTab1::OnCbnSelchangeCombo1)
 	ON_BN_CLICKED(IDC_BUTTON1, &CInsertTab1::OnBnClickedButton1)
+	ON_BN_CLICKED(IDOK, &CInsertTab1::OnBnClickedOk)
 END_MESSAGE_MAP()
 
 
@@ -194,4 +195,11 @@ void CInsertTab1::OnBnClickedButton1()
 	else {
 		MessageBox("에러가 발생했습니다.");
 	}
+}
+
+
+void CInsertTab1::OnBnClickedOk()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CDialogEx::OnOK();
 }

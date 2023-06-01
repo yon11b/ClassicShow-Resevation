@@ -53,25 +53,24 @@ BOOL CDeleteTab1::OnInitDialog() {
     SQLHDBC hDbc;
     SQLHSTMT hStmt; // Statement Handle
     SQLCHAR query[101];
-    if (DB.db_connect()) {
-        MessageBox("DB CONEECT!");
-
+    if (DB.db_connect()) {        
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            MessageBox("SQL START SELECT");
-            sprintf_s((char*)query, 201, "SELECT TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
+            sprintf_s((char*)query, 101, "SELECT SHOWNO TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
+            SQLCHAR showno[30];
             SQLCHAR title[100];
             SQLCHAR musician[100];
             SQLCHAR composer[100];
             SQLCHAR date[100];
 
-            SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
-            SQLBindCol(hStmt, 2, SQL_C_CHAR, musician, 100, NULL);
-            SQLBindCol(hStmt, 3, SQL_C_CHAR, composer, 100, NULL);
-            SQLBindCol(hStmt, 4, SQL_C_CHAR, date, 100, NULL);
+            SQLBindCol(hStmt, 1, SQL_C_CHAR, showno, 30, NULL);
+            SQLBindCol(hStmt, 2, SQL_C_CHAR, title, 100, NULL);
+            SQLBindCol(hStmt, 3, SQL_C_CHAR, musician, 100, NULL);
+            SQLBindCol(hStmt, 4, SQL_C_CHAR, composer, 100, NULL);
+            SQLBindCol(hStmt, 5, SQL_C_CHAR, date, 100, NULL);
 
             int num;
             CString str;
@@ -79,14 +78,13 @@ BOOL CDeleteTab1::OnInitDialog() {
             while (SQLFetch(hStmt) != SQL_NO_DATA)
             {
                 num = m_ListCtrl.GetItemCount();
-                str.Format(_T("%d"), num);
-                m_ListCtrl.InsertItem(num, str);
+                //m_ListCtrl.InsertItem(num, (CString)showno);
+                m_ListCtrl.InsertItem(num, (CString)showno);
                 m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
                 m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)musician, NULL, NULL, NULL, NULL);
                 m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)composer, NULL, NULL, NULL, NULL);
                 m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)date, NULL, NULL, NULL, NULL);
             }
-
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
         }
@@ -108,14 +106,11 @@ void CDeleteTab1::OnBnClickedButton2()
     SQLCHAR query[101];
     CString showno;
     if (DB.db_connect()) {
-        MessageBox("DB CONEECT!");
-
         hDbc = DB.hDbc;
         m_ShowNo.GetWindowText(showno);
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            MessageBox("SQL START SELECT");
-            sprintf_s((char*)query, 101, "DELETE FROM SHOW WHERE SHOWNO='%s'", showno);
+            sprintf_s((char*)query, 101, "DELETE FROM SHOW WHERE REVIEWNO='%s'", showno);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

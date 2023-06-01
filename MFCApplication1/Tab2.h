@@ -27,8 +27,5 @@ public:
 	CDBConnect DB;
 	CEdit m_Score;
 	CListCtrl m_ListCtrl;
-	afx_msg void OnLvnItemchangedListctrl2(NMHDR* pNMHDR, LRESULT* pResult);
-	afx_msg void OnBnClickedBtnSelectshow();
 	afx_msg void OnBnClickedBtnSelectreview();
-	afx_msg void OnLvnItemchangedListReview(NMHDR* pNMHDR, LRESULT* pResult);
 };

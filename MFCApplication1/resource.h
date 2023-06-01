@@ -27,6 +27,16 @@
 #define IDD_DELETE_DLG1                 175
 #define IDD_DELETE_DLG2                 176
 #define IDD_DELETE_DLG3                 177
+#define IDD_SCHEMA                      182
+#define IDD_SCHEMA_DLG1                 183
+#define IDD_SCHEMA_DLG2                 184
+#define IDD_SCHEMA_DLG3                 185
+#define IDD_SCHEMA_DLG4                 186
+#define IDD_SCHEMA_DLG5                 187
+#define IDD_SCHEMA_DLG6                 194
+#define IDD_SCHEMA_DLG7                 195
+#define IDD_SEAT_LOTTE_CONCERT          200
+#define IDD_SEAT_SEJONG_CONCERT         201
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -82,14 +92,16 @@
 #define IDC_EDIT10                      1049
 #define IDC_LIST2                       1058
 #define IDC_LIST3                       1061
+#define IDC_LIST1                       1062
+#define IDC_BTN                         1063
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        182
+#define _APS_NEXT_RESOURCE_VALUE        204
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1062
+#define _APS_NEXT_CONTROL_VALUE         1064
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

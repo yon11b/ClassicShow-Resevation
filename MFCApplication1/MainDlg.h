@@ -4,6 +4,7 @@
 #include "InsertDlg.h"
 #include "UpdateDlg.h"
 #include "DeleteDlg.h"
+#include "SchemaDlg.h"
 
 // CMainDlg 대화 상자
 
@@ -29,6 +30,7 @@ public:
 	CInsertDlg InsertDlg;
 	CUpdateDlg UpdateDlg;
 	CDeleteDlg DeleteDlg;
+	CSchemaDlg SchemaDlg;
 	afx_msg void OnBnClickedSchemaCheck();
 	afx_msg void OnBnClickedSelectQuery();
 	afx_msg void OnBnClickedInsertQuery();

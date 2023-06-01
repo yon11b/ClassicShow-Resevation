@@ -57,12 +57,12 @@ BOOL CDeleteDlg::OnInitDialog()
 	pDlg2 = new CDeleteTab2;
 	pDlg2->Create(IDD_DELETE_DLG2, &m_Tab);
 	pDlg2->MoveWindow(0, 25, rect.Width(), rect.Height());
-	pDlg2->ShowWindow(SW_SHOW);
+	pDlg2->ShowWindow(SW_HIDE);
 
 	pDlg3 = new CDeleteTab3;
 	pDlg3->Create(IDD_DELETE_DLG3, &m_Tab);
 	pDlg3->MoveWindow(0, 25, rect.Width(), rect.Height());
-	pDlg3->ShowWindow(SW_SHOW);
+	pDlg3->ShowWindow(SW_HIDE);
 
 	return TRUE;
 }

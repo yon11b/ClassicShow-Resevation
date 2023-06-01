@@ -39,10 +39,9 @@ END_MESSAGE_MAP()
 
 BOOL CInsertDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
-	m_Tab.InsertItem(0, _T("공연안내"));
-	m_Tab.InsertItem(1, _T("공연리뷰"));
-	m_Tab.InsertItem(2, _T("예매내역"));
-	m_Tab.InsertItem(3, _T("마이페이지"));
+	m_Tab.InsertItem(0, _T("예매하기"));
+	m_Tab.InsertItem(1, _T("리뷰작성"));
+	m_Tab.InsertItem(2, _T("공연추가"));
 
 	m_Tab.SetCurSel(0);
 
@@ -57,12 +56,12 @@ BOOL CInsertDlg::OnInitDialog() {
 	pDlg2 = new CInsertTab2;
 	pDlg2->Create(IDD_INSERT_DLG2, &m_Tab);
 	pDlg2->MoveWindow(0, 25, rect.Width(), rect.Height());
-	pDlg2->ShowWindow(SW_SHOW);
+	pDlg2->ShowWindow(SW_HIDE);
 
 	pDlg3 = new CInsertTab3;
 	pDlg3->Create(IDD_INSERT_DLG3, &m_Tab);
 	pDlg3->MoveWindow(0, 25, rect.Width(), rect.Height());
-	pDlg3->ShowWindow(SW_SHOW);
+	pDlg3->ShowWindow(SW_HIDE);
 
 	return TRUE;
 }

@@ -55,21 +55,16 @@ void CTab3::OnBnClickedBtnSelectasc()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SQLHDBC hDbc;
 	SQLHSTMT hStmt;	// Statement Handle
-	SQLCHAR query[101];
+	SQLCHAR query[201];
 	CString score;
 	CString userid = SESSION.userId;
-	MessageBox(userid,_T("USERID"));
 
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
 
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			MessageBox("SQL START SELECT");
-
-			sprintf_s((char*)query, 201, "SELECT TITLE, [DATE], RESERVE_ENDTIME FROM RESERVATE R, SHOW S WHERE R.USERID='%s' AND R.SHOWNO=S.SHOWNO", userid);
-			MessageBox((CString)query);
+			sprintf_s((char*)query, 201, "SELECT TITLE, [DATE], RESERVE_ENDTIME FROM RESERVATE R, SHOW S WHERE R.USERID='%s' AND R.SHOWNO=S.SHOWNO", userid);			
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 			CString str;
 			SQLCHAR title[100];
@@ -79,7 +74,6 @@ void CTab3::OnBnClickedBtnSelectasc()
 			SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
 			SQLBindCol(hStmt, 2, SQL_C_CHAR, date, 50, NULL);
 			SQLBindCol(hStmt, 3, SQL_C_CHAR, canceldate, 50, NULL);
-			MessageBox("BINDING");
 
 			int num;
 			// 공연 데이터 나열
@@ -90,8 +84,7 @@ void CTab3::OnBnClickedBtnSelectasc()
 				m_ListCtrl.InsertItem(num, str);
 				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)date, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)canceldate, NULL, NULL, NULL, NULL);
-				MessageBox("4");
+				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)canceldate, NULL, NULL, NULL, NULL);				
 			}
 			SQLCloseCursor(hStmt);
 			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
@@ -104,28 +97,22 @@ void CTab3::OnBnClickedBtnSelectasc()
 }
 
 
-
 void CTab3::OnBnClickedBtnSelectdesc()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 		// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SQLHDBC hDbc;
 	SQLHSTMT hStmt;	// Statement Handle
-	SQLCHAR query[101];
+	SQLCHAR query[201];
 	CString score;
 	CString userid = SESSION.userId;
-	MessageBox(userid, _T("USERID"));
 
+	m_ListCtrl.DeleteAllItems();
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
-
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			MessageBox("SQL START SELECT");
-
-			sprintf_s((char*)query, 201, "SELECT TITLE, [DATE], RESERVE_ENDTIME FROM RESERVATE R, SHOW S WHERE R.USERID='%s' AND R.SHOWNO=S.SHOWNO ORDER BY [DATE] DESC", userid);
-			MessageBox((CString)query);
+			sprintf_s((char*)query, 201, "SELECT TITLE, [DATE], RESERVE_ENDTIME FROM RESERVATE R, SHOW S WHERE R.USERID='%s' AND R.SHOWNO=S.SHOWNO ORDER BY [DATE] DESC", userid);			
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 			CString str;
 			SQLCHAR title[100];
@@ -134,8 +121,7 @@ void CTab3::OnBnClickedBtnSelectdesc()
 
 			SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
 			SQLBindCol(hStmt, 2, SQL_C_CHAR, date, 50, NULL);
-			SQLBindCol(hStmt, 3, SQL_C_CHAR, canceldate, 50, NULL);
-			MessageBox("BINDING");
+			SQLBindCol(hStmt, 3, SQL_C_CHAR, canceldate, 50, NULL);			
 
 			int num;
 			// 공연 데이터 나열
@@ -146,8 +132,7 @@ void CTab3::OnBnClickedBtnSelectdesc()
 				m_ListCtrl.InsertItem(num, str);
 				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)date, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)canceldate, NULL, NULL, NULL, NULL);
-				MessageBox("4");
+				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)canceldate, NULL, NULL, NULL, NULL);								
 			}
 			SQLCloseCursor(hStmt);
 			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

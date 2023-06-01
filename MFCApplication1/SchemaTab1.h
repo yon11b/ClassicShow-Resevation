@@ -1,23 +1,21 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "DBConnect.h"
-#include "Session.h"
 
 
-extern CSESSION SESSION; // 전역 객체 선언
-// CDeleteTab2 대화 상자
+// CSchemaTab1 대화 상자
 
-class CDeleteTab2 : public CDialogEx
+class CSchemaTab1 : public CDialogEx
 {
-	DECLARE_DYNAMIC(CDeleteTab2)
+	DECLARE_DYNAMIC(CSchemaTab1)
 
 public:
-	CDeleteTab2(CWnd* pParent = nullptr);   // 표준 생성자입니다.
-	virtual ~CDeleteTab2();
+	CSchemaTab1(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	virtual ~CSchemaTab1();
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_DELETE_DLG2 };
+	enum { IDD = IDD_SCHEMA_DLG1 };
 #endif
 
 protected:
@@ -26,8 +24,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
+	CListCtrl m_ListCtrl;	
 	CDBConnect DB;
-	CListCtrl m_ListCtrl;
-	CEdit m_ReviewNo;
 	afx_msg void OnBnClickedButton1();
 };

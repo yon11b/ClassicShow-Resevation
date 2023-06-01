@@ -42,4 +42,5 @@ public:
 	CEdit m_BSeat;
 	CEdit m_Hour;
 	CEdit m_Minute;
+	afx_msg void OnBnClickedOk();
 };

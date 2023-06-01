@@ -59,7 +59,9 @@ void CTab1::OnBnClickedBtnSelectshow()
 	
 	SQLHDBC hDbc;
 	SQLHSTMT hStmt;	// Statement Handle
-	SQLCHAR query[101];
+	SQLCHAR query[201];
+
+	m_ListCtrl.DeleteAllItems();
 	if (DB.db_connect()) {
 		MessageBox("DB CONEECT!");
 
@@ -77,7 +79,6 @@ void CTab1::OnBnClickedBtnSelectshow()
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			MessageBox("SQL START SELECT");
 			sprintf_s((char*)query, 201, "SELECT TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW WHERE '%s' <= FORMAT([DATE], 'yyyy-MM-dd HH:mm:ss') AND FORMAT([DATE], 'yyyy-MM-dd HH:mm:ss') <='%s'", strStartDate, strFinishDate);
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
@@ -103,6 +104,7 @@ void CTab1::OnBnClickedBtnSelectshow()
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)musician, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)composer, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)date, NULL, NULL, NULL, NULL);
+				// MessageBox((CString)title); // Debugging code
 			}
 
 			SQLCloseCursor(hStmt);

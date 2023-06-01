@@ -9,6 +9,7 @@
 #include "InsertDlg.h"
 #include "UpdateDlg.h"
 #include "DeleteDlg.h"
+#include "SchemaDlg.h"
 
 
 // CMainDlg 대화 상자
@@ -46,6 +47,7 @@ END_MESSAGE_MAP()
 void CMainDlg::OnBnClickedSchemaCheck()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	SchemaDlg.DoModal();
 }
 
 
