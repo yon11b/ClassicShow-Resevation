@@ -110,38 +110,48 @@ void CInsertTab3::OnEnChangeEdit1()
 	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
 }
 
-
 void CInsertTab3::OnBnClickedBtn()
 {
     // TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
     CString showno;
     SQLHDBC hDbc;
     SQLHSTMT hStmt; // Statement Handle
-    SQLCHAR query[201];
+    SQLCHAR query[301];
 
     m_ShowNo.GetWindowText(showno);
     MessageBox(showno);
     int ishowno = _ttoi(showno);
-
+    SESSION.showNo = ishowno;
     if (DB.db_connect()) {
         MessageBox("DB CONEECT!");
 
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 201, "SELECT HALLNAME FROM CONCERTHALL WHERE HALLNO = (SELECT HALLNO FROM SHOW WHERE SHOWNO = %d)", ishowno);
+            sprintf_s((char*)query, 301, "SELECT C.HALLNAME FROM CONCERTHALL C WHERE C.HALLNO = (SELECT S.HALLNO FROM SHOW S WHERE S.SHOWNO = %d)", ishowno);
+            MessageBox((char*)query);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
-            SQLCHAR hallname[50];
-            SQLBindCol(hStmt, 1, SQL_C_CHAR, hallname, 50, NULL);
+            SQLCHAR hallname[100];
+            //SQLBindCol(hStmt, 1, SQL_C_CHAR, hallname, 100, NULL);
+            SQLRETURN ret = SQLFetch(hStmt);
+            ret = SQLGetData(hStmt, 1, SQL_C_CHAR, hallname, 100, NULL);
+
+            if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
+                MessageBox("Hallno를 구했습니다.");
+            }
             CString hall = (CString)hallname;
-            if (hall.Compare("예술의 전당")){
+            MessageBox(hall);
+            if (hall =="예술의 전당"){
+                MessageBox("11111");
                 SeatSacDlg.DoModal();
             }
-            else if (hall.Compare("잠실 롯데")) {
+            else if (hall=="잠실 롯데") {
+                MessageBox("22222");
                 SeatLotteDlg.DoModal();
             }
             else { // "세종문화회관"
+                MessageBox("3333ㄷ33");
                 SeatSejongDlg.DoModal();
             }
             SQLCloseCursor(hStmt);

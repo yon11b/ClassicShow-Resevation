@@ -37,6 +37,8 @@
 #define IDD_SCHEMA_DLG7                 195
 #define IDD_SEAT_LOTTE_CONCERT          200
 #define IDD_SEAT_SEJONG_CONCERT         201
+#define IDD_INSERT_CARDPW_CHECK         206
+#define IDD_CARDPW_CHECK                206
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -81,7 +83,6 @@
 #define IDC_EDIT6                       1034
 #define IDC_EDIT7                       1035
 #define IDC_EDIT8                       1036
-#define IDCANCEL                        1042
 #define IDC_COMBO1                      1043
 #define IDC_COMBO2                      1044
 #define IDC_DATETIMEPICKER2             1045
@@ -94,14 +95,67 @@
 #define IDC_LIST3                       1061
 #define IDC_LIST1                       1062
 #define IDC_BTN                         1063
+#define IDC_BUTTON185                   1219
+#define IDC_BUTTON186                   1220
+#define IDC_BUTTON187                   1221
+#define IDC_BUTTON188                   1222
+#define IDC_BUTTON189                   1223
+#define IDC_BUTTON190                   1224
+#define IDC_BUTTON191                   1225
+#define IDC_BUTTON192                   1226
+#define IDC_BUTTON193                   1227
+#define IDC_BUTTON194                   1228
+#define IDC_BUTTON195                   1229
+#define IDC_BUTTON196                   1230
+#define IDC_BUTTON197                   1231
+#define IDC_BUTTON198                   1232
+#define IDC_BUTTON199                   1233
+#define IDC_BUTTON200                   1234
+#define IDC_BUTTON201                   1235
+#define IDC_BUTTON202                   1236
+#define IDC_BUTTON203                   1237
+#define IDC_BUTTON204                   1238
+#define IDC_BUTTON205                   1239
+#define IDC_SAC_1                       1252
+#define IDC_SAC_2                       1253
+#define IDC_SAC_3                       1254
+#define IDC_SAC_4                       1255
+#define IDC_SAC_5                       1256
+#define IDC_SAC_6                       1257
+#define IDC_SAC_7                       1258
+#define IDC_SAC_8                       1259
+#define IDC_SAC_9                       1260
+#define IDC_SAC_10                      1261
+#define IDC_SAC_11                      1262
+#define IDC_SAC_12                      1263
+#define IDC_SAC_13                      1264
+#define IDC_SAC_14                      1265
+#define IDC_SAC_15                      1266
+#define IDC_SAC_16                      1267
+#define IDC_SAC_17                      1268
+#define IDC_SAC_18                      1269
+#define IDC_SAC_19                      1270
+#define IDC_SAC_20                      1271
+#define IDC_SAC_21                      1272
+#define IDC_SAC_22                      1273
+#define IDC_SAC_23                      1274
+#define IDC_SAC_24                      1275
+#define IDC_SAC_25                      1276
+#define IDC_SAC_26                      1277
+#define IDC_SAC_27                      1278
+#define IDC_SAC_28                      1279
+#define IDC_SAC_29                      1280
+#define IDC_SAC_30                      1281
+#define IDC_SAC_31                      1282
+#define IDC_SAC_32                      1283
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        204
+#define _APS_NEXT_RESOURCE_VALUE        208
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1064
+#define _APS_NEXT_CONTROL_VALUE         1132
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

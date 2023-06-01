@@ -57,7 +57,7 @@ BOOL CDeleteTab1::OnInitDialog() {
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 101, "SELECT SHOWNO TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
+            sprintf_s((char*)query, 101, "SELECT SHOWNO, TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
             SQLCHAR showno[30];

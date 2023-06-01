@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "Session.h"
 
-
+extern CSESSION SESSION;
 // CSeatSejongDlg 대화 상자
 
 class CSeatSejongDlg : public CDialogEx

@@ -4,7 +4,9 @@
 #include "SeatSacDlg.h"
 #include "SeatLotteDlg.h"
 #include "SeatSejongDlg.h"
+#include "Session.h"
 
+extern CSESSION SESSION;
 // CInsertTab3 대화 상자
 
 class CInsertTab3 : public CDialogEx

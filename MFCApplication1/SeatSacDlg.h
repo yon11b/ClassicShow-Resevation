@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "Session.h"
+#include "DBConnect.h"
 
-
+extern CSESSION SESSION;
 // CSeatSacDlg 대화 상자
 
 class CSeatSacDlg : public CDialogEx
@@ -23,7 +25,9 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CButton m_Seat1;
+	CDBConnect DB;
 	afx_msg void OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct);
 	afx_msg void OnBnClickedButton1();
+	afx_msg void OnBnClickedButton114();
+	afx_msg void OnBtnClick(UINT ullD);
 };
