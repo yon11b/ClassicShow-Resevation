@@ -168,7 +168,6 @@ void CInsertTab1::OnBnClickedButton1()
 		m_StartDate.GetTime(getStartDate);
 		COleDateTime startDate(getStartDate.GetYear(), getStartDate.GetMonth(), getStartDate.GetDay(), 0, 0, 0);
 		CString strStartDate = startDate.Format(_T("%Y-%m-%d %H:%M:%S"));
-		MessageBox(strStartDate);
 
 		COleDateTime getFinishDate;
 		m_EndDate.GetTime(getFinishDate);
@@ -183,7 +182,6 @@ void CInsertTab1::OnBnClickedButton1()
 				COMPOSER, GENRE, PRICE_R, PRICE_S, PRICE_A, PRICE_B, HALLNO) VALUES('%s','%s','%s','%s','%s','%s',\
 				'%s','%s','%s','%s','%s',%d)", title, strDate, musician, strStartDate, strFinishDate, composer, genre, rseat, sseat, aseat, bseat,hallno);
 			SQLExecDirect(hStmt2, query, SQL_NTS);
-			MessageBox((LPCTSTR)query);
 		}
 		else {
 			MessageBox("ERORR");

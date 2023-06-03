@@ -46,7 +46,7 @@ BOOL CSchemaDlg::OnInitDialog() {
 	m_Tab.InsertItem(1, _T("리뷰"));
 	m_Tab.InsertItem(2, _T("예매내역"));
 	m_Tab.InsertItem(3, _T("좌석"));
-	m_Tab.InsertItem(4, _T("공연장."));
+	m_Tab.InsertItem(4, _T("공연장"));
 	m_Tab.InsertItem(5, _T("사용자"));
 	m_Tab.InsertItem(6, _T("카드"));
 

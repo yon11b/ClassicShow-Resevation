@@ -38,6 +38,7 @@
 #define IDD_SEAT_LOTTE_CONCERT          200
 #define IDD_SEAT_SEJONG_CONCERT         201
 #define IDD_CARDPW_CHECK                206
+#define IDD_PAYMENT                     208
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -94,6 +95,7 @@
 #define IDC_LIST3                       1061
 #define IDC_LIST1                       1062
 #define IDC_BTN                         1063
+#define IDC_CK_SEATINFO                 1132
 #define IDC_BUTTON185                   1219
 #define IDC_BUTTON186                   1220
 #define IDC_BUTTON187                   1221
@@ -268,9 +270,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        208
+#define _APS_NEXT_RESOURCE_VALUE        210
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1132
+#define _APS_NEXT_CONTROL_VALUE         1133
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

@@ -21,6 +21,11 @@ CSeatLotteDlg::~CSeatLotteDlg()
 {
 }
 
+CSeatLotteDlg::CSeatLotteDlg(CString pShowno, CString pHallno)
+{
+	showno = pShowno;
+}
+
 void CSeatLotteDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);

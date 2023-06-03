@@ -30,11 +30,10 @@ protected:
 public:
 	CListCtrl m_ListCtrl; 
 	CDBConnect DB;
-	CSeatSacDlg SeatSacDlg;
+	//CSeatSacDlg SeatSacDlg;
 	CSeatLotteDlg SeatLotteDlg;
 	CSeatSejongDlg SeatSejongDlg;
 
-	afx_msg void OnEnChangeEdit1();
 	CEdit m_ShowNo;
 	afx_msg void OnBnClickedBtn();
 };

@@ -33,7 +33,6 @@ void CInsertTab3::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CInsertTab3, CDialogEx)
-	ON_EN_CHANGE(IDC_EDIT1, &CInsertTab3::OnEnChangeEdit1)
     ON_BN_CLICKED(IDC_BTN, &CInsertTab3::OnBnClickedBtn)
 END_MESSAGE_MAP()
 
@@ -99,17 +98,6 @@ BOOL CInsertTab3::OnInitDialog() {
     return TRUE;
 }
 
-
-void CInsertTab3::OnEnChangeEdit1()
-{
-	// TODO:  RICHEDIT 컨트롤인 경우, 이 컨트롤은
-	// CDialogEx::OnInitDialog() 함수를 재지정 
-	//하고 마스크에 OR 연산하여 설정된 ENM_CHANGE 플래그를 지정하여 CRichEditCtrl().SetEventMask()를 호출하지 않으면
-	// 이 알림 메시지를 보내지 않습니다.
-
-	// TODO:  여기에 컨트롤 알림 처리기 코드를 추가합니다.
-}
-
 void CInsertTab3::OnBnClickedBtn()
 {
     // TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
@@ -119,44 +107,45 @@ void CInsertTab3::OnBnClickedBtn()
     SQLCHAR query[301];
 
     m_ShowNo.GetWindowText(showno);
-    int ishowno = _ttoi(showno);
-    SESSION.showNo = ishowno;
     if (DB.db_connect()) {
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 301, "SELECT C.HALLNAME FROM CONCERTHALL C WHERE C.HALLNO = (SELECT S.HALLNO FROM SHOW S WHERE S.SHOWNO = %d)", ishowno);
+            sprintf_s((char*)query, 301, "SELECT  C.HALLNO, C.HALLNAME FROM CONCERTHALL C WHERE C.HALLNO = (SELECT S.HALLNO FROM SHOW S WHERE S.SHOWNO = '%s')", showno);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
             SQLCHAR hallname[100];
+            SQLCHAR hallno[10];
             //SQLBindCol(hStmt, 1, SQL_C_CHAR, hallname, 100, NULL);
             SQLRETURN ret = SQLFetch(hStmt);
-            ret = SQLGetData(hStmt, 1, SQL_C_CHAR, hallname, 100, NULL);
-
+            ret = SQLGetData(hStmt, 1, SQL_C_CHAR, hallno, 10, NULL);
+            ret = SQLGetData(hStmt, 2, SQL_C_CHAR, hallname, 100, NULL);
+    
             if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
-                MessageBox("값이 존재합니다.");
-                CString hall = (CString)hallname;
-                MessageBox(hall);
-                if (hall == "예술의 전당") {
-                    MessageBox("11111");
-                    SeatSacDlg.DoModal();
+                // DB 연결 해제
+                SQLCloseCursor(hStmt);
+                SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
+                DB.db_disconnect();
+                
+                // 해당 공연장으로 이동
+                CString str_hallname = (CString)hallname;
+                CString str_concertno= (CString)hallno;
+                if (str_hallname == "예술의 전당") {
+                    CSeatSacDlg SeatSac(showno, str_concertno);
+                    SeatSac.DoModal();
                 }
-                else if (hall == "잠실 롯데") {
-                    MessageBox("22222");
+                else if (str_hallname == "잠실 롯데") {
+                    CSeatLotteDlg SeatLotteDlg(showno, str_concertno);
                     SeatLotteDlg.DoModal();
                 }
                 else { // "세종문화회관"
-                    MessageBox("333333");
                     SeatSejongDlg.DoModal();
                 }
             }
             else {
                 MessageBox("값이 존재하지 않습니다.");
             }
-            SQLCloseCursor(hStmt);
-            SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
         }
-        DB.db_disconnect();
     }
     else {
         MessageBox("공연 정보를 불러오는데 실패했습니다.");

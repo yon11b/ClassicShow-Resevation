@@ -59,6 +59,7 @@ void CTab3::OnBnClickedBtnSelectasc()
 	CString score;
 	CString userid = SESSION.userId;
 
+	m_ListCtrl.DeleteAllItems();
 	if (DB.db_connect()) {
 
 		hDbc = DB.hDbc;

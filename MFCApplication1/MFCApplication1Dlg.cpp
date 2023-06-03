@@ -75,6 +75,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_BN_CLICKED(IDC_LOGIN, &CMFCApplication1Dlg::OnBnClickedLogin)
 	ON_BN_CLICKED(IDC_FIN, &CMFCApplication1Dlg::OnBnClickedFin)
 	ON_STN_CLICKED(IDS_TITLE, &CMFCApplication1Dlg::OnStnClickedTitle)
+
 END_MESSAGE_MAP()
 
 

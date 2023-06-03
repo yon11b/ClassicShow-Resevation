@@ -119,13 +119,10 @@ void CDeleteTab2::OnBnClickedButton1()
     SQLCHAR query[101];
 
     if (DB.db_connect()) {
-        MessageBox("DB CONEECT!");
-
         hDbc = DB.hDbc;
         m_ReviewNo.GetWindowText(reviewno);
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            MessageBox("SQL START SELECT");
             sprintf_s((char*)query, 101, "DELETE FROM REVIEW WHERE REVIEWNO='%s'", reviewno);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
             SQLCloseCursor(hStmt);
