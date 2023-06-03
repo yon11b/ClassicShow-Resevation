@@ -1,24 +1,28 @@
-﻿#pragma once
-#include "afxdialogex.h"
-
+﻿#include "afxdialogex.h"
+#include "DBConnect.h"
 
 // CSchemaTab7 대화 상자
 
 class CSchemaTab7 : public CDialogEx
 {
-	DECLARE_DYNAMIC(CSchemaTab7)
+    DECLARE_DYNAMIC(CSchemaTab7)
 
 public:
-	CSchemaTab7(CWnd* pParent = nullptr);   // 표준 생성자입니다.
-	virtual ~CSchemaTab7();
+    CSchemaTab7(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+    virtual ~CSchemaTab7();
 
-// 대화 상자 데이터입니다.
+    // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_SCHEMA_DLG7 };
+    enum { IDD = IDD_SCHEMA_DLG7 };
 #endif
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
+    virtual BOOL OnInitDialog();
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
+public:
+    CListCtrl m_ListCtrl;
+    CDBConnect DB;
+    afx_msg void OnBnClickedButton1();
 };

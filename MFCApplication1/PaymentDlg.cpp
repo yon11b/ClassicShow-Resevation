@@ -156,13 +156,17 @@ void CPaymentDlg::OnBnClickedButton2()
     // TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
     SQLHDBC hDbc;
     SQLHSTMT hStmt; // Statement Handle
-    SQLCHAR query[201];
+    SQLCHAR query1[201];
+    SQLCHAR query2[201];
     if (DB.db_connect()) {
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 201, "INSERT INTO RESERVATE(USERID, SHOWNO, SEATNO, HALLNO, PAYMENT) VALUES('%s','%s','%s','%s','%s')", userid, ckshowno, ckseatno, ckhallno, ckprice);
-            SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
+            sprintf_s((char*)query1, 201, "INSERT INTO RESERVATE(USERID, SHOWNO, SEATNO, HALLNO, PAYMENT) VALUES('%s','%s','%s','%s','%s')", userid, ckshowno, ckseatno, ckhallno, ckprice);
+            SQLExecDirect(hStmt, (SQLCHAR*)query1, SQL_NTS);
+
+            sprintf_s((char*)query2, 201, "UPDATE CARD SET BALANCE=BALANCE-'%s' WHERE USERID='%s'", ckprice, userid);
+            SQLExecDirect(hStmt, (SQLCHAR*)query2, SQL_NTS);
 
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

@@ -104,7 +104,6 @@ void CTab1::OnBnClickedBtnSelectshow()
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)musician, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)composer, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)date, NULL, NULL, NULL, NULL);
-				// MessageBox((CString)title); // Debugging code
 			}
 
 			SQLCloseCursor(hStmt);

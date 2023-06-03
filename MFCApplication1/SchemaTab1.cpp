@@ -62,6 +62,7 @@ BOOL CSchemaTab1::OnInitDialog() {
 
 void CSchemaTab1::OnBnClickedButton1()
 {
+	m_ListCtrl.DeleteAllItems();
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SQLHDBC hDbc;
 	SQLHSTMT hStmt;	// Statement Handle
