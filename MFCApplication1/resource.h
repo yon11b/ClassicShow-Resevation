@@ -13,7 +13,6 @@
 #define IDD_DIALOG2                     137
 #define IDD_DIALOG3                     138
 #define IDD_SEAT_SAC_CONCERT            142
-#define IDD_DIALOG4                     144
 #define IDD_INSERT                      144
 #define IDD_MAIN                        146
 #define IDD_INSERT_DLG2                 152
@@ -34,11 +33,13 @@
 #define IDD_SCHEMA_DLG4                 186
 #define IDD_SCHEMA_DLG5                 187
 #define IDD_SCHEMA_DLG6                 194
-#define IDD_SCHEMA_DLG7                 195
 #define IDD_SEAT_LOTTE_CONCERT          200
 #define IDD_SEAT_SEJONG_CONCERT         201
 #define IDD_CARDPW_CHECK                206
 #define IDD_PAYMENT                     208
+#define IDD_SCHEMA_DLG7                 210
+#define IDD_CUSTOM                      212
+#define IDD_DIALOG4                     214
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -61,8 +62,11 @@
 #define IDC_BUTTON1                     1016
 #define IDC_BUTTON2                     1017
 #define IDC_SELECT_QUERY                1018
+#define IDC_BUTTON3                     1018
 #define IDC_INSERT_QUERY                1019
+#define IDC_BUTTON4                     1019
 #define IDC_DELETE_QUERY                1020
+#define IDC_BUTTON5                     1020
 #define IDC_UPDATE_QUERY                1021
 #define IDC_CUSTOM_QUERY                1022
 #define IDC_SCHEMA_CHECK                1023
@@ -270,7 +274,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        210
+#define _APS_NEXT_RESOURCE_VALUE        216
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1133
 #define _APS_NEXT_SYMED_VALUE           101

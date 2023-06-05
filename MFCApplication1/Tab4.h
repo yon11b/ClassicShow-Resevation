@@ -3,19 +3,19 @@
 #include "DBConnect.h"
 
 
-// CSchemaTab7 대화 상자
+// CTab4 대화 상자
 
-class CSchemaTab7 : public CDialogEx
+class CTab4 : public CDialogEx
 {
-	DECLARE_DYNAMIC(CSchemaTab7)
+	DECLARE_DYNAMIC(CTab4)
 
 public:
-	CSchemaTab7(CWnd* pParent = nullptr);   // 표준 생성자입니다.
-	virtual ~CSchemaTab7();
+	CTab4(CWnd* pParent = nullptr);   // 표준 생성자입니다.
+	virtual ~CTab4();
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_SCHEMA_DLG7 };
+	enum { IDD = IDD_DIALOG4 };
 #endif
 
 protected:
@@ -24,7 +24,8 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedButton1(); 
-	CDBConnect DB;
 	CListCtrl m_ListCtrl;
+	afx_msg void OnBnClickedButton1();
+	CEdit m_ShowNo;
+	CDBConnect DB;
 };

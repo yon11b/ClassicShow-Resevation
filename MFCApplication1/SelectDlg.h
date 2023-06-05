@@ -4,6 +4,7 @@
 class CTab1;
 class CTab2;
 class CTab3;
+class CTab4;
 
 // CSelectDlg 대화 상자
 
@@ -17,6 +18,7 @@ public:
 	CTab1 *pDlg1;
 	CTab2 *pDlg2;
 	CTab3 *pDlg3;
+	CTab4* pDlg4;
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME

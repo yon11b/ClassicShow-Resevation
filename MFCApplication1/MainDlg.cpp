@@ -38,6 +38,7 @@ BEGIN_MESSAGE_MAP(CMainDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_INSERT_QUERY, &CMainDlg::OnBnClickedInsertQuery)
 	ON_BN_CLICKED(IDC_UPDATE_QUERY, &CMainDlg::OnBnClickedUpdateQuery)
 	ON_BN_CLICKED(IDC_DELETE_QUERY, &CMainDlg::OnBnClickedDeleteQuery)
+	ON_BN_CLICKED(IDC_CUSTOM_QUERY, &CMainDlg::OnBnClickedCustomQuery)
 END_MESSAGE_MAP()
 
 
@@ -76,4 +77,10 @@ void CMainDlg::OnBnClickedDeleteQuery()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	DeleteDlg.DoModal();
+}
+
+void CMainDlg::OnBnClickedCustomQuery()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CustomDlg.DoModal();
 }

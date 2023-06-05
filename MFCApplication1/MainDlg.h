@@ -5,6 +5,7 @@
 #include "UpdateDlg.h"
 #include "DeleteDlg.h"
 #include "SchemaDlg.h"
+#include "CustomDlg.h"
 
 // CMainDlg 대화 상자
 
@@ -31,9 +32,11 @@ public:
 	CUpdateDlg UpdateDlg;
 	CDeleteDlg DeleteDlg;
 	CSchemaDlg SchemaDlg;
+	CCustomDlg CustomDlg;
 	afx_msg void OnBnClickedSchemaCheck();
 	afx_msg void OnBnClickedSelectQuery();
 	afx_msg void OnBnClickedInsertQuery();
 	afx_msg void OnBnClickedUpdateQuery();
 	afx_msg void OnBnClickedDeleteQuery();
+	afx_msg void OnBnClickedCustomQuery();
 };

@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "SchemaTab7.h"
 
 class CSchemaTab1;
 class CSchemaTab2;
