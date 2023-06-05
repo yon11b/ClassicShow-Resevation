@@ -38,5 +38,6 @@ public:
 	CString ckprice;
 	afx_msg void OnBnClickedButton1();
 	CEdit m_InputPw;
-	afx_msg void OnBnClickedButton2();
+	void DoReservation();
+	CString ExecuteQuery(SQLHSTMT hStmt, const CString& query);
 };

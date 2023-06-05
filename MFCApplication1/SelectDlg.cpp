@@ -54,11 +54,12 @@ BOOL CSelectDlg::OnInitDialog()
 	pDlg3->Create(IDD_DIALOG3, &m_Tab);
 	pDlg3->MoveWindow(0, 25, rect.Width(), rect.Height());
 	pDlg3->ShowWindow(SW_HIDE);
-
+	/*
 	pDlg4 = new CTab4;
 	pDlg4->Create(IDD_DIALOG4, &m_Tab);
 	pDlg4->MoveWindow(0, 25, rect.Width(), rect.Height());
 	pDlg4->ShowWindow(SW_HIDE);
+	*/
 	return TRUE;
 }
 
@@ -88,25 +89,25 @@ void CSelectDlg::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
 		pDlg1->ShowWindow(SW_SHOW);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_HIDE);
-		pDlg4->ShowWindow(SW_HIDE);
+		//pDlg4->ShowWindow(SW_HIDE);
 		break;
 	case 1:
 		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_SHOW);
 		pDlg3->ShowWindow(SW_HIDE);
-		pDlg4->ShowWindow(SW_HIDE);
+		//pDlg4->ShowWindow(SW_HIDE);
 		break;
 	case 2:
 		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_SHOW);
-		pDlg4->ShowWindow(SW_HIDE);
+		//pDlg4->ShowWindow(SW_HIDE);
 		break;
 	case 3:
 		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_HIDE);
-		pDlg4->ShowWindow(SW_SHOW);
+		//pDlg4->ShowWindow(SW_SHOW);
 		break;
 	}
 	*pResult = 0;

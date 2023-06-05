@@ -35,7 +35,6 @@
 #define IDD_SCHEMA_DLG6                 194
 #define IDD_SEAT_LOTTE_CONCERT          200
 #define IDD_SEAT_SEJONG_CONCERT         201
-#define IDD_CARDPW_CHECK                206
 #define IDD_PAYMENT                     208
 #define IDD_SCHEMA_DLG7                 210
 #define IDD_CUSTOM                      212

@@ -153,7 +153,6 @@ void CSeatSacDlg::OnBnClickedButton1()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_SeatNo.GetWindowText(seatno);
-	MessageBox("===============");
 
 	// 이미 예매된 좌석인지 검증하기
 	SQLHDBC hDbc;
@@ -171,8 +170,6 @@ void CSeatSacDlg::OnBnClickedButton1()
 			if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
 				SQLGetData(hStmt, 1, SQL_C_LONG, &count, sizeof(count), NULL);
 				if (count == 0) {
-					MessageBox((char*)query);
-
 					// 결제 페이지로 넘어가기
 					CPaymentDlg PaymentDlg(showno, seatno, hallno);
 					PaymentDlg.DoModal();
