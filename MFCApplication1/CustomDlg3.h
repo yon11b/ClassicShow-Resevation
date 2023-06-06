@@ -30,4 +30,7 @@ public:
 	CComboBox m_ConcertBox;
 	afx_msg void OnCbnSelchangeCombo1();
 	CListCtrl m_ListCtrl;
+	CDBConnect DB;
+	CString seatno;
+	CString hallno;
 };

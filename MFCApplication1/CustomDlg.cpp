@@ -31,6 +31,7 @@ BEGIN_MESSAGE_MAP(CCustomDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CCustomDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(IDC_BUTTON6, &CCustomDlg::OnBnClickedButton6)
 	ON_BN_CLICKED(IDC_BUTTON2, &CCustomDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BUTTON3, &CCustomDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -48,6 +49,15 @@ void CCustomDlg::OnBnClickedButton2()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	CustomDlg2.DoModal();
 }
+
+
+
+void CCustomDlg::OnBnClickedButton3()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	CustomDlg3.DoModal();
+}
+
 
 
 void CCustomDlg::OnBnClickedButton6()

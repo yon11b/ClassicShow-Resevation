@@ -31,4 +31,5 @@ public:
 	CCustomDlg2 CustomDlg2;
 	CCustomDlg3 CustomDlg3;
 	afx_msg void OnBnClickedButton2();
+	afx_msg void OnBnClickedButton3();
 };
