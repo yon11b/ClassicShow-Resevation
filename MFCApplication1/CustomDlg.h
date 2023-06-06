@@ -2,6 +2,8 @@
 #include "afxdialogex.h"
 #include"CustomDlg1.h"
 #include"CustomDlg2.h"
+#include"CustomDlg3.h"
+
 
 // CCustomDlg 대화 상자
 
@@ -27,5 +29,6 @@ public:
 	afx_msg void OnBnClickedButton6();
 	CCustomDlg1 CustomDlg1;
 	CCustomDlg2 CustomDlg2;
+	CCustomDlg3 CustomDlg3;
 	afx_msg void OnBnClickedButton2();
 };

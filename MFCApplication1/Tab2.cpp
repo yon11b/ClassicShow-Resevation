@@ -44,9 +44,9 @@ BOOL CTab2::OnInitDialog() {
 	m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.05);
 	m_ListCtrl.InsertColumn(1, TEXT("제목"), LVCFMT_CENTER, rt.Width() * 0.4);
-	m_ListCtrl.InsertColumn(2, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.1);
+	m_ListCtrl.InsertColumn(2, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.2);
 	m_ListCtrl.InsertColumn(3, TEXT("홀"), LVCFMT_CENTER, rt.Width() * 0.1);
-	m_ListCtrl.InsertColumn(4, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.2);
+	m_ListCtrl.InsertColumn(4, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.1);	
 	m_ListCtrl.InsertColumn(5, TEXT("시야"), LVCFMT_CENTER, rt.Width() * 0.05);
 	m_ListCtrl.InsertColumn(6, TEXT("소리"), LVCFMT_CENTER, rt.Width() * 0.05);
 	m_ListCtrl.InsertColumn(7, TEXT("좌석총평"), LVCFMT_CENTER, rt.Width() * 0.05);

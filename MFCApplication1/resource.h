@@ -42,6 +42,7 @@
 #define IDD_CUSTOM_ALL                  216
 #define IDD_CUSTOM_DLG1                 217
 #define IDD_CUSTOM_DLG2                 218
+#define IDD_CUSTOM_DLG3                 222
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -280,7 +281,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        222
+#define _APS_NEXT_RESOURCE_VALUE        224
 #define _APS_NEXT_COMMAND_VALUE         32771
 #define _APS_NEXT_CONTROL_VALUE         1134
 #define _APS_NEXT_SYMED_VALUE           101

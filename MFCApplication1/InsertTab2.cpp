@@ -95,6 +95,7 @@ void CInsertTab2::OnBnClickedButton1()
     CString userid;
     int hallno;
     int seatno;
+    int isSeat = 0;
 
     SQLHDBC hDbc1;
     SQLHSTMT hStmt1;    // Statement Handle
@@ -128,6 +129,11 @@ void CInsertTab2::OnBnClickedButton1()
             SQLRETURN ret1 = SQLFetch(hStmt1);
             if (ret1 == SQL_SUCCESS || ret1 == SQL_SUCCESS_WITH_INFO) {
                 MessageBox("Seatno과 Hallno을 구했습니다.");
+                isSeat = 1;
+            }
+            else {
+                MessageBox("존재하지 않는 좌석입니다.");
+                isSeat = 0;
             }
         }
         SQLCloseCursor(hStmt1);
@@ -135,11 +141,11 @@ void CInsertTab2::OnBnClickedButton1()
         DB.db_disconnect();
     }
     else {
-        MessageBox("Seatno과 Hallno을  구하지 못했습니다.");
+        MessageBox("DB 연결에 실패했습니다.");
     }
 
     //2. INSERT 실행
-    if (DB.db_connect()) {
+    if (isSeat && DB.db_connect()) {
         hDbc2 = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc2, &hStmt2) == SQL_SUCCESS)
         {

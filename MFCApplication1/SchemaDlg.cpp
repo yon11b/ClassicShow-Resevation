@@ -156,7 +156,7 @@ void CSchemaDlg::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
 		break;
 
 	case 6:
-		pDlg1->ShowWindow(SW_SHOW);
+		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_HIDE);
 		pDlg4->ShowWindow(SW_HIDE);

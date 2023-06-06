@@ -111,7 +111,7 @@ void CInsertTab3::OnBnClickedBtn()
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 301, "SELECT  C.HALLNO, C.HALLNAME FROM CONCERTHALL C WHERE C.HALLNO = (SELECT S.HALLNO FROM SHOW S WHERE S.SHOWNO = '%s')", showno);
+            sprintf_s((char*)query, 301, "SELECT C.HALLNO, C.HALLNAME FROM CONCERTHALL C WHERE C.HALLNO = (SELECT S.HALLNO FROM SHOW S WHERE S.SHOWNO = '%s')", showno);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
             SQLCHAR hallname[100];

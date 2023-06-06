@@ -39,9 +39,9 @@ END_MESSAGE_MAP()
 
 BOOL CInsertDlg::OnInitDialog() {
 	CDialogEx::OnInitDialog();
-	m_Tab.InsertItem(0, _T("예매하기"));
+	m_Tab.InsertItem(0, _T("공연추가"));
 	m_Tab.InsertItem(1, _T("리뷰작성"));
-	m_Tab.InsertItem(2, _T("공연추가"));
+	m_Tab.InsertItem(2, _T("예매하기"));
 
 	m_Tab.SetCurSel(0);
 

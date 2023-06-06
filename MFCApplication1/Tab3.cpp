@@ -41,10 +41,10 @@ BOOL CTab3::OnInitDialog() {
 	CRect rt;
 	m_ListCtrl.GetWindowRect(&rt);
 	m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
-	m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.1);
-	m_ListCtrl.InsertColumn(1, TEXT("공연명"), LVCFMT_CENTER, rt.Width() * 0.3);
-	m_ListCtrl.InsertColumn(2, TEXT("관람일시"), LVCFMT_CENTER, rt.Width() * 0.3);
-	m_ListCtrl.InsertColumn(3, TEXT("취소가능일시"), LVCFMT_CENTER, rt.Width() * 0.3);
+	m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(1, TEXT("공연명"), LVCFMT_CENTER, rt.Width() * 0.43);
+	m_ListCtrl.InsertColumn(2, TEXT("관람일시"), LVCFMT_CENTER, rt.Width() * 0.26);
+	m_ListCtrl.InsertColumn(3, TEXT("취소가능일시"), LVCFMT_CENTER, rt.Width() * 0.26);
 
 	return TRUE;
 }

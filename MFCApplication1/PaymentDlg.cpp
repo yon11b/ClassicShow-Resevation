@@ -87,9 +87,7 @@ BOOL CPaymentDlg::OnInitDialog() {
             else if ((CString)seatClass == "B") {
                 ckprice = (CString)price_b;
             }
-            seatinfo = (CString)section + "구역" + (CString)row + "열" + (CString)column + "번째 " + "금액: " + ckprice;
-            MessageBox(seatinfo);
-
+            seatinfo = (CString)section + "구역 " + (CString)row + "열 " + (CString)column + "번째 " + "금액: " + ckprice;
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
         }

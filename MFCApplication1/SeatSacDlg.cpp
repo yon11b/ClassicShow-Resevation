@@ -110,7 +110,6 @@ void CSeatSacDlg::OnBtnClick(UINT ullD)
 		{
 			sprintf_s((char*)query, 201, "SELECT PRICE_R, PRICE_S, PRICE_A, PRICE_B FROM SHOW WHERE SHOWNO = '%s'", showno);
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
-			MessageBox((char*)query);
 
 			SQLCHAR price_r[100];
 			SQLCHAR price_s[100];
@@ -127,16 +126,16 @@ void CSeatSacDlg::OnBtnClick(UINT ullD)
 			ret = SQLGetData(hStmt, 4, SQL_C_CHAR, price_b, 100, NULL);
 
 			if (1252 <= ullD && ullD <= 1283) {
-				seatinfo="좌석번호: "+ seatno + "가격 :"+(CString)price_r;
+				seatinfo="좌석번호: "+ seatno + " / 가격 :"+(CString)price_r;
 			}
 			else if (1284 <= ullD && ullD <= 1323) {
-				seatinfo = "좌석번호: " + seatno + "가격 :" + (CString)price_s;
+				seatinfo = "좌석번호: " + seatno + " / 가격 :" + (CString)price_s;
 			}
 			else if (1324 <= ullD && ullD <= 1349) {
-				seatinfo = "좌석번호: " + seatno + "가격 :" + (CString)price_a;
+				seatinfo = "좌석번호: " + seatno + " / 가격 :" + (CString)price_a;
 			}
 			else if (1350 <= ullD && ullD <= 1399) {
-				seatinfo = "좌석번호: " + seatno + "가격 :" + (CString)price_b;
+				seatinfo = "좌석번호: " + seatno + " / 가격 :" + (CString)price_b;
 			}
 			MessageBox(seatinfo);
 			SQLCloseCursor(hStmt);
@@ -153,22 +152,53 @@ void CSeatSacDlg::OnBnClickedButton1()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	m_SeatNo.GetWindowText(seatno);
+	int isSeat;
 
 	// 이미 예매된 좌석인지 검증하기
 	SQLHDBC hDbc;
-	SQLHSTMT hStmt; // Statement Handle
+	SQLHSTMT hStmt1; // Statement Handle
+	SQLHSTMT hStmt2; // Statement Handle
 	SQLCHAR query[201];
 	SQLINTEGER count;
+
+	isSeat = 0;
+
 	if (DB.db_connect()) {
 		hDbc = DB.hDbc;
-		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
+
+		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt1) == SQL_SUCCESS)
 		{
-			sprintf_s((char*)query, 201, "SELECT COUNT(*) FROM RESERVATE WHERE SHOWNO='%s'AND SEATNO='%s'AND HALLNO='%s'", showno, seatno, hallno);
-			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
-			SQLRETURN ret = SQLFetch(hStmt);
+			sprintf_s((char*)query, 201, "SELECT COUNT(*) FROM SEAT WHERE SEATNO='%s'AND HALLNO='%s'", seatno, hallno);
+			SQLExecDirect(hStmt1, (SQLCHAR*)query, SQL_NTS);
+			SQLRETURN ret = SQLFetch(hStmt1);
 
 			if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
-				SQLGetData(hStmt, 1, SQL_C_LONG, &count, sizeof(count), NULL);
+				SQLGetData(hStmt1, 1, SQL_C_LONG, &count, sizeof(count), NULL);
+				if (count == 0) {
+					MessageBox("존재하지 않는 좌석입니다");
+					isSeat = 0;
+				}
+				else {
+					isSeat = 1;
+				}
+			}
+			else {
+				MessageBox("존재하지 않는 좌석입니다");
+				isSeat = 0;
+			}
+
+			SQLCloseCursor(hStmt1);
+			SQLFreeHandle(SQL_HANDLE_STMT, hStmt1);
+		}
+
+		if (isSeat && SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt2) == SQL_SUCCESS)
+		{
+			sprintf_s((char*)query, 201, "SELECT COUNT(*) FROM RESERVATE WHERE SHOWNO='%s'AND SEATNO='%s'AND HALLNO='%s'", showno, seatno, hallno);
+			SQLExecDirect(hStmt2, (SQLCHAR*)query, SQL_NTS);
+			SQLRETURN ret = SQLFetch(hStmt2);
+
+			if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
+				SQLGetData(hStmt2, 1, SQL_C_LONG, &count, sizeof(count), NULL);
 				if (count == 0) {
 					// 결제 페이지로 넘어가기
 					CPaymentDlg PaymentDlg(showno, seatno, hallno);
@@ -179,14 +209,14 @@ void CSeatSacDlg::OnBnClickedButton1()
 				}
 			}
 			else {
-				MessageBox("????.");
+				MessageBox("예기치 못한 오류가 발생했습니다.");
 			}
-			SQLCloseCursor(hStmt);
-			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
-			DB.db_disconnect();
+			SQLCloseCursor(hStmt2);
+			SQLFreeHandle(SQL_HANDLE_STMT, hStmt2);
 		}
 		else {
-			MessageBox("공연 정보를 불러오는데 실패했습니다.");
+			MessageBox("공연 예매에 실패했습니다.");
 		}
 	}
+	DB.db_disconnect();
 }

@@ -50,12 +50,10 @@ BOOL CUpdateTab1::OnInitDialog() {
     SQLHSTMT hStmt; // Statement Handle
     SQLCHAR query[101];
     if (DB.db_connect()) {
-        MessageBox("DB CONEECT!");
 
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            MessageBox("SQL START SELECT");
             sprintf_s((char*)query, 101, "SELECT TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
@@ -179,7 +177,6 @@ BOOL CUpdateTab1::PreTranslateMessage(MSG* pMsg)
                         showno= _ttoi(primaryKey) + 1;
                         sprintf_s((char*)query, 200, "UPDATE SHOW SET %s = '%s' WHERE SHOWNO = %d",
                             columnName, newValue, showno);
-                        MessageBox((char*)query);
                         if (SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS) == SQL_SUCCESS)
                         {
                             MessageBox(_T("데이터베이스 업데이트 성공"));
