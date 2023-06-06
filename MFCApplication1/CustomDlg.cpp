@@ -24,13 +24,12 @@ CCustomDlg::~CCustomDlg()
 void CCustomDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_LIST2, m_ListCtrl);
-	DDX_Control(pDX, IDC_EDIT1, m_UserInput);
 }
 
 
 BEGIN_MESSAGE_MAP(CCustomDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CCustomDlg::OnBnClickedButton1)
+	ON_BN_CLICKED(IDC_BUTTON6, &CCustomDlg::OnBnClickedButton6)
 END_MESSAGE_MAP()
 
 
@@ -40,7 +39,12 @@ END_MESSAGE_MAP()
 void CCustomDlg::OnBnClickedButton1()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	CString userquery;
-	m_UserInput.GetWindowText(userquery);
+	CustomDlg1.DoModal();
+}
+
+
+void CCustomDlg::OnBnClickedButton6()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 
 }

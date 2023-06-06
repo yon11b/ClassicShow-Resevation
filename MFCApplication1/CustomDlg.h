@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
-
+#include"CustomDlg1.h"
 
 // CCustomDlg 대화 상자
 
@@ -22,7 +22,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CListCtrl m_ListCtrl;
 	afx_msg void OnBnClickedButton1();
-	CEdit m_UserInput;
+	afx_msg void OnBnClickedButton6();
+	CCustomDlg1 CustomDlg1;
 };

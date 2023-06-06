@@ -39,6 +39,9 @@
 #define IDD_SCHEMA_DLG7                 210
 #define IDD_CUSTOM                      212
 #define IDD_DIALOG4                     214
+#define IDD_CUSTOM_ALL                  216
+#define IDD_CUSTOM_DLG1                 217
+#define IDD_CUSTOM_DLG2                 218
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -90,8 +93,11 @@
 #define IDC_COMBO2                      1044
 #define IDC_DATETIMEPICKER2             1045
 #define IDC_EDIT9                       1045
+#define IDC_COMBO3                      1045
 #define IDC_DATETIMEPICKER3             1046
+#define IDC_COMBO4                      1046
 #define IDC_DATETIMEPICKER4             1047
+#define IDC_COMBO5                      1047
 #define IDC_DATETIMEPICKER5             1048
 #define IDC_EDIT10                      1049
 #define IDC_LIST2                       1058
@@ -99,6 +105,7 @@
 #define IDC_LIST1                       1062
 #define IDC_BTN                         1063
 #define IDC_CK_SEATINFO                 1132
+#define IDC_BUTTON6                     1133
 #define IDC_BUTTON185                   1219
 #define IDC_BUTTON186                   1220
 #define IDC_BUTTON187                   1221
@@ -273,9 +280,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        216
+#define _APS_NEXT_RESOURCE_VALUE        222
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1133
+#define _APS_NEXT_CONTROL_VALUE         1134
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif
