@@ -31,7 +31,7 @@ BOOL CCustomDlg1::OnInitDialog()
             SQLExecDirect(hStmt, query, SQL_NTS);
             SQLBindCol(hStmt, 1, SQL_C_CHAR, showNo, 100, NULL);
             SQLBindCol(hStmt, 2, SQL_C_CHAR, titleList, 100, NULL);
-            // 공연 데이터 나열
+
             while (SQLFetch(hStmt) != SQL_NO_DATA)
             {
                 showinfo = (CString)showNo +". " + (CString)titleList;

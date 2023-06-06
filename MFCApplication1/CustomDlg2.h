@@ -1,10 +1,10 @@
 ﻿#pragma once
 #include "afxdialogex.h"
 #include "DBConnect.h"
-
-
+#include "Session.h"
 
 extern CSESSION SESSION;
+
 // CCustomDlg2 대화 상자
 
 class CCustomDlg2 : public CDialogEx
@@ -22,8 +22,17 @@ public:
 
 protected:
 	virtual BOOL OnInitDialog();
+	CString userid;
 	CDBConnect DB;
+	CComboBox m_Show;
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnCbnSelchangeCombo1();
+	CComboBox m_Seat;
+	CString seatno;
+	CString hallno;
+	CListCtrl m_ListCtrl;
 };
