@@ -63,13 +63,10 @@ void CTab1::OnBnClickedBtnSelectshow()
 
 	m_ListCtrl.DeleteAllItems();
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
-
 		COleDateTime getStartDate;
 		m_DateStart.GetTime(getStartDate);
 		COleDateTime startDate(getStartDate.GetYear(), getStartDate.GetMonth(), getStartDate.GetDay(), 0, 0, 0);
 		CString strStartDate = startDate.Format(_T("%Y-%m-%d %H:%M:%S"));
-		MessageBox(strStartDate);
 
 		COleDateTime getFinishDate;
 		m_DateFinish.GetTime(getFinishDate);

@@ -146,15 +146,12 @@ void CInsertTab3::OnBnClickedBtn()
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt1) == SQL_SUCCESS)
         {
             sprintf_s((char*)query, 401, "SELECT COUNT(*) FROM SHOW WHERE SHOWNO = '%s' AND GETDATE() >= RESERVE_STARTTIME AND RESERVE_ENDTIME >= GETDATE()", showno);
-            MessageBox((char*)query);
             SQLExecDirect(hStmt1, (SQLCHAR*)query, SQL_NTS);
             SQLRETURN ret1 = SQLFetch(hStmt1);
-
             if (ret1 == SQL_SUCCESS || ret1 == SQL_SUCCESS_WITH_INFO) {
                 SQLGetData(hStmt1, 1, SQL_C_LONG, &count, sizeof(count), NULL);
                 CString cnt;
                 cnt.Format(_T("%d"), count);
-                MessageBox(cnt);
                 if (count == 1) {
                     // COUNT(*) 값이 1인 경우(valid date)
                     isValidDate = 1;             

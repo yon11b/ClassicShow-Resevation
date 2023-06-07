@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "DBConnect.h"
 
 
 // CCustomAll 대화 상자
@@ -14,7 +15,7 @@ public:
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_CUSTOM_DLG2 };
+	enum { IDD = IDD_CUSTOM_ALL };
 #endif
 
 protected:
@@ -22,5 +23,7 @@ protected:
 
 	DECLARE_MESSAGE_MAP()
 public:
-	CComboBox m_Show;
+	afx_msg void OnBnClickedButton1();
+	CEdit m_UserQuery;
+	CDBConnect DB;
 };

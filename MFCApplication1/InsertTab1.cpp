@@ -73,8 +73,6 @@ void CInsertTab1::OnCbnSelchangeCombo1()
 		m_HallBox.AddString(_T("콘서트홀"));
 		m_HallBox.AddString(_T("IBK챔버"));
 		m_HallBox.AddString(_T("리사이틀홀"));
-		m_HallBox.AddString(_T("인춘아트홀"));
-		m_HallBox.AddString(_T("CJ토월극장"));
 		break;
 	case 1:
 		m_HallBox.AddString(_T("콘서트홀"));
@@ -82,8 +80,6 @@ void CInsertTab1::OnCbnSelchangeCombo1()
 	case 2:
 		m_HallBox.AddString(_T("세종대극장"));
 		m_HallBox.AddString(_T("세종M씨어터"));
-		m_HallBox.AddString(_T("세종체임버홀"));
-		m_HallBox.AddString(_T("세종S씨어터"));
 		break;
 	}
 }
@@ -113,7 +109,6 @@ void CInsertTab1::OnBnClickedButton1()
 	SQLCHAR query[301];
 	SQLLEN result;
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
 		m_Title.GetWindowText(title);
 		m_Musician.GetWindowText(musician);
 		m_Composer.GetWindowText(composer);
@@ -126,8 +121,6 @@ void CInsertTab1::OnBnClickedButton1()
 		m_BSeat.GetWindowText(bseat);
 		m_Hour.GetWindowText(hour);
 		m_Minute.GetWindowText(minute);
-
-		MessageBox(rseat);
 
 		// show의 외래키로 들어갈 hallno 구하기
 		hDbc1 = DB.hDbc;
@@ -162,7 +155,6 @@ void CInsertTab1::OnBnClickedButton1()
 		// 3. 날짜 + 시간
 		COleDateTime date(getDate.GetYear(), getDate.GetMonth(), getDate.GetDay(), _ttoi(hour), _ttoi(minute), 0);
 		CString strDate = date.Format(_T("%Y-%m-%d %H:%M:%S"));
-		MessageBox(strDate);
 
 		COleDateTime getStartDate;
 		m_StartDate.GetTime(getStartDate);
@@ -172,8 +164,7 @@ void CInsertTab1::OnBnClickedButton1()
 		COleDateTime getFinishDate;
 		m_EndDate.GetTime(getFinishDate);
 		COleDateTime finishDate(getFinishDate.GetYear(), getFinishDate.GetMonth(), getFinishDate.GetDay(), 0, 0, 0);
-		CString strFinishDate = finishDate.Format(_T("%Y-%m-%d %H:%M:%S"));
-		MessageBox(strFinishDate);
+		CString strFinishDate = finishDate.Format(_T("%Y-%m-%d %H:%M:%S"));	
 
 		hDbc2 = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc2, &hStmt2) == SQL_SUCCESS)

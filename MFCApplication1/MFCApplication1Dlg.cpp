@@ -208,7 +208,6 @@ void CMFCApplication1Dlg::OnBnClickedLogin()
 				MessageBox("로그인에 성공했습니다.");
 				SESSION.userId = loginid;
 				SESSION.userPw = loginpw;
-				MessageBox(SESSION.userId,_T("USERID"));
 				MainDlg.DoModal();
 				SQLCloseCursor(hStmt);
 				SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

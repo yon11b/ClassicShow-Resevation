@@ -52,22 +52,22 @@ void CSeatSacDlg::OnDrawItem(int nIDCtl, LPDRAWITEMSTRUCT lpDrawItemStruct)
 	// TODO: 여기에 메시지 처리기 코드를 추가 및/또는 기본값을 호출합니다.
 	//if (nIDCtl == IDC_BUTTON1)
 	int r, g, b;
-	if (1252 <= nIDCtl && nIDCtl <= 1283) {
+	if ((1252 <= nIDCtl && nIDCtl <= 1283) || nIDCtl == 1400) {
 		r = 255;
 		g = 000;
 		b = 051;
 	}
-	else if (1284 <= nIDCtl && nIDCtl <= 1323) {
+	else if ((1284 <= nIDCtl && nIDCtl <= 1323) || nIDCtl == 1401) {
 		r = 255;
 		g = 255;
 		b = 000;
 	}
-	else if (1324 <= nIDCtl && nIDCtl <= 1349) {
+	else if ((1324 <= nIDCtl && nIDCtl <= 1349) || nIDCtl == 1402) {
 		r = 102;
 		g = 255;
 		b = 000;
 	}
-	else if (1350 <= nIDCtl && nIDCtl <= 1399) {
+	else if ((1350 <= nIDCtl && nIDCtl <= 1399) || nIDCtl == 1403) {
 		r = 00;
 		g = 102;
 		b = 255;
@@ -137,7 +137,6 @@ void CSeatSacDlg::OnBtnClick(UINT ullD)
 			else if (1350 <= ullD && ullD <= 1399) {
 				seatinfo = "좌석번호: " + seatno + " / 가격 :" + (CString)price_b;
 			}
-			MessageBox(seatinfo);
 			SQLCloseCursor(hStmt);
 			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
 		}

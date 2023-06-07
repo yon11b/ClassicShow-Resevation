@@ -280,6 +280,10 @@
 #define IDC_SAC_146                     1397
 #define IDC_SAC_147                     1398
 #define IDC_SAC_148                     1399
+#define IDC_SAC_149                     1400
+#define IDC_SAC_150                     1401
+#define IDC_SAC_151                     1402
+#define IDC_SAC_152                     1403
 
 // Next default values for new objects
 // 

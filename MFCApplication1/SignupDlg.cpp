@@ -68,14 +68,6 @@ void CSignupDlg::OnBnClickedSubmit()
     hDbc = DB.hDbc;
     if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
     {
-        MessageBox("SQL START INSERT");
-        MessageBox(userid);
-        MessageBox(userpw);
-        MessageBox(username);
-        MessageBox(cardno);
-        MessageBox(cardbal);
-        MessageBox(cardpw);
-
         sprintf_s((char*)query, 101, "INSERT INTO [USER] VALUES('%s','%s','%s')", userid, userpw, username);
         SQLExecDirect(hStmt, query, SQL_NTS);
 

@@ -117,7 +117,7 @@ void CCustomDlg3::OnBnClickedButton1()
         // 사용자가 선택한 공연장 안에 있는 좌석들을 리뷰 테이블에서 찾기
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt1) == SQL_SUCCESS) {
             sprintf_s((char*)query2, 201, "SELECT R.* FROM REVIEW R, CONCERTHALL C WHERE R.HALLNUM = C.HALLNO AND R.HALLNUM = '%s' ORDER BY R.TOTAL DESC", hallno);
-            MessageBox((LPCTSTR)query2); // Debugging code
+            //MessageBox((LPCTSTR)query2); // Debugging code
             SQLExecDirect(hStmt1, query2, SQL_NTS);
 
             //get으로 바꾸기 =>>while로 바꾸기. 석이 여러개니까. 
@@ -143,13 +143,11 @@ void CCustomDlg3::OnBnClickedButton1()
 
             // seat의 detail 정보 구하기
             seatno = (CString)SeatNo;
-            MessageBox(seatno);
             i = 0;
             while (i < len) {
                 if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt2) == SQL_SUCCESS)
                 {
                     sprintf_s((char*)query3, 201, "SELECT CLASS, SECTION, [ROW], [COLUMN] FROM SEAT WHERE SEATNO = %d AND HALLNO=%d", atoi(list_SeatNo[i]), atoi(hallno));
-                    MessageBox((char*)query3);
 
                     SQLExecDirect(hStmt2, query3, SQL_NTS);
 
@@ -170,12 +168,6 @@ void CCustomDlg3::OnBnClickedButton1()
                         CString sectionStr(section);
                         CString rowStr(row);
                         CString columnStr(column);
-
-                        MessageBox(columnStr);
-                        MessageBox(seatClassStr);
-                        MessageBox(sectionStr);
-                        MessageBox(rowStr);
-
                         seatinfo = sectionStr + _T("구역 ") + rowStr + _T("열 ") + columnStr + _T("번째");
                         MessageBox(seatinfo);
                         SQLCloseCursor(hStmt2);
@@ -212,8 +204,6 @@ void CCustomDlg3::OnCbnSelchangeCombo1()
         m_HallBox.AddString(_T("콘서트홀"));
         m_HallBox.AddString(_T("IBK챔버"));
         m_HallBox.AddString(_T("리사이틀홀"));
-        m_HallBox.AddString(_T("인춘아트홀"));
-        m_HallBox.AddString(_T("CJ토월극장"));
         break;
     case 1:
         m_HallBox.AddString(_T("콘서트홀"));
@@ -221,8 +211,6 @@ void CCustomDlg3::OnCbnSelchangeCombo1()
     case 2:
         m_HallBox.AddString(_T("세종대극장"));
         m_HallBox.AddString(_T("세종M씨어터"));
-        m_HallBox.AddString(_T("세종체임버홀"));
-        m_HallBox.AddString(_T("세종S씨어터"));
         break;
     }
 }

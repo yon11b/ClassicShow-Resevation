@@ -65,8 +65,8 @@ BOOL CDeleteDlg::OnInitDialog()
 	pDlg3->MoveWindow(0, 25, rect.Width(), rect.Height());
 	pDlg3->ShowWindow(SW_HIDE);
 
-	pDlg4 = new CDeleteTab3;
-	pDlg4->Create(IDD_DELETE_DLG3, &m_Tab);
+	pDlg4 = new CDeleteTab4;
+	pDlg4->Create(IDD_DELETE_DLG4, &m_Tab);
 	pDlg4->MoveWindow(0, 25, rect.Width(), rect.Height());
 	pDlg4->ShowWindow(SW_HIDE);
 

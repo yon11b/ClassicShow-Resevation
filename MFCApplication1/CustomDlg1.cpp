@@ -13,7 +13,6 @@
 BOOL CCustomDlg1::OnInitDialog()
 {
     CDialogEx::OnInitDialog();
-    MessageBox("start");
     SQLHDBC hDbc;
     SQLHSTMT hStmt;	// Statement Handle
     SQLCHAR query[301];
@@ -123,7 +122,6 @@ void CCustomDlg1::OnCbnSelchangeCombo1()
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt1) == SQL_SUCCESS) {
             sprintf_s((char*)query, 501, "SELECT S.SEATNO, CLASS, SECTION, [ROW], [COLUMN], S.HALLNO FROM SEAT S, RESERVATE R WHERE USERID='%s' AND R.SHOWNO = '%s' AND R.SEATNO=S.SEATNO AND R.HALLNO=S.HALLNO", userid, showno);
-            MessageBox((LPCTSTR)query); // Debugging code
             SQLExecDirect(hStmt1, query, SQL_NTS);
 
             SQLCHAR seatNo[30];
@@ -195,25 +193,18 @@ void CCustomDlg1::OnBnClickedButton1()
     m_Total.GetWindowText(total);
     m_Detail.GetWindowText(detail);
 
-    MessageBox(sound);
-    MessageBox(view);
-    MessageBox(detail);
-    MessageBox(userid);
-    MessageBox(hallno);
-    MessageBox(seatno);
-    MessageBox(total);
 
     if (DB.db_connect()) {
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt2) == SQL_SUCCESS) {
             sprintf_s((char*)query, 501, "INSERT INTO REVIEW(SOUND, [VIEW], DETAIL, USERID, HALLNUM, SEATNUM, TOTAL) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s')", sound, view, detail, userid, hallno, seatno, total);
-            MessageBox((char*)query);
+            //MessageBox((char*)query);
             SQLExecDirect(hStmt2, (SQLCHAR*)query, SQL_NTS);
             MessageBox("성공적으로 리뷰를 작성했습니다!");
         }
 
         else {
-            MessageBox("에러났죠");
+            MessageBox("에러발생");
         }
         SQLCloseCursor(hStmt2);
         SQLFreeHandle(SQL_HANDLE_STMT, hStmt2);

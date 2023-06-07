@@ -55,14 +55,10 @@ void CUpdateTab3::OnBnClickedButton1()
 	m_AfterPw.GetWindowText(afterpw);
 	if (SESSION.userPw == beforepw) {
 		if (DB.db_connect()) {
-			MessageBox("DB CONEECT!");
-
 			hDbc = DB.hDbc;
 			if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 			{
-				MessageBox("SQL START SELECT");
 				sprintf_s((char*)query, 101, "UPDATE [USER] SET PW='%s' WHERE ID='%s'", afterpw, SESSION.userId);
-				MessageBox((CString)query);
 				SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 			}
 			SQLCloseCursor(hStmt);
@@ -90,14 +86,11 @@ void CUpdateTab3::OnBnClickedButton2()
 	m_AccountPw.GetWindowText(accountpw);
 	m_Balance.GetWindowText(balance);
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
-
+		
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			MessageBox("SQL START SELECT");
 			sprintf_s((char*)query, 101, "UPDATE CARD SET ACCOUNTNO='%s', CARDPW='%s', BALANCE='%s' WHERE USERID='%s'", accountno, accountpw, balance, SESSION.userId);
-			MessageBox((CString)query);
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 		}
 		SQLCloseCursor(hStmt);

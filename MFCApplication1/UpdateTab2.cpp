@@ -143,7 +143,6 @@ void CUpdateTab2::OnDblclkList2(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
-	MessageBox("Clicked!!");
 	iSavedItem = pNMItemActivate->iItem;
 	iSavedSubitem = pNMItemActivate->iSubItem;
 
@@ -181,7 +180,7 @@ BOOL CUpdateTab2::PreTranslateMessage(MSG* pMsg)
 
 				// 수정된 값을 데이터베이스에 반영
 				CString columnName = GetColumnName(iSavedSubitem); // 열 이름 가져오기
-				MessageBox(columnName);
+				//MessageBox(columnName);
 				CString newValue = str; // 새로운 값
 				CString primaryKey = m_ListCtrl.GetItemText(iSavedItem, 0); // 선택된 항목의 기본 키 값 (ID)
 
@@ -199,7 +198,7 @@ BOOL CUpdateTab2::PreTranslateMessage(MSG* pMsg)
 					{
 						reviewno = _ttoi(primaryKey);
 						sprintf_s((char*)query, 200, "UPDATE REVIEW SET %s = '%s' WHERE REVIEWNO = %d", columnName, newValue, reviewno);
-						MessageBox((char*)query);
+						//MessageBox((char*)query);
 						if (SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS) == SQL_SUCCESS)
 						{
 							MessageBox(_T("데이터베이스 업데이트 성공"));

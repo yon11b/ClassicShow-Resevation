@@ -5,6 +5,7 @@
 #include"CustomDlg3.h"
 #include"CustomDlg4.h"
 #include"CustomDlg5.h"
+#include"CustomAll.h"
 
 // CCustomDlg 대화 상자
 
@@ -33,6 +34,7 @@ public:
 	CCustomDlg3 CustomDlg3;
 	CCustomDlg4 CustomDlg4;
 	CCustomDlg5 CustomDlg5;
+	CCustomAll CustomAll;
 	afx_msg void OnBnClickedButton2();
 	afx_msg void OnBnClickedButton3();
 	afx_msg void OnBnClickedButton4();

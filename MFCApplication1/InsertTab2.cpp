@@ -64,8 +64,6 @@ void CInsertTab2::OnCbnSelchangeCombo1()
         m_HallBox.AddString(_T("콘서트홀"));
         m_HallBox.AddString(_T("IBK챔버"));
         m_HallBox.AddString(_T("리사이틀홀"));
-        m_HallBox.AddString(_T("인춘아트홀"));
-        m_HallBox.AddString(_T("CJ토월극장"));
         break;
     case 1:
         m_HallBox.AddString(_T("콘서트홀"));
@@ -73,8 +71,6 @@ void CInsertTab2::OnCbnSelchangeCombo1()
     case 2:
         m_HallBox.AddString(_T("세종대극장"));
         m_HallBox.AddString(_T("세종M씨어터"));
-        m_HallBox.AddString(_T("세종체임버홀"));
-        m_HallBox.AddString(_T("세종S씨어터"));
         break;
     }
 }

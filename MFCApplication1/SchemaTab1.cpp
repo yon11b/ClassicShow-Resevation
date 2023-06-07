@@ -68,12 +68,10 @@ void CSchemaTab1::OnBnClickedButton1()
 	SQLHSTMT hStmt;	// Statement Handle
 	SQLCHAR query[101];
 	if (DB.db_connect()) {
-		MessageBox("DB CONEECT!");
 
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			MessageBox("SQL START SELECT");
 			sprintf_s((char*)query, 101, "SELECT * FROM SHOW");
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 

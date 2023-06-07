@@ -188,7 +188,7 @@ void CCustomDlg2::OnCbnSelchangeCombo1()
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt1) == SQL_SUCCESS) {
             sprintf_s((char*)query, 501, "SELECT S.SEATNO, CLASS, SECTION, [ROW], [COLUMN], S.HALLNO FROM SEAT S, RESERVATE R WHERE USERID='%s' AND R.SHOWNO = '%s' AND R.SEATNO=S.SEATNO AND R.HALLNO=S.HALLNO", userid, showno);
-            MessageBox((LPCTSTR)query); // Debugging code
+            //MessageBox((LPCTSTR)query); // Debugging code
             SQLExecDirect(hStmt1, query, SQL_NTS);
 
             SQLCHAR seatNo[30];
