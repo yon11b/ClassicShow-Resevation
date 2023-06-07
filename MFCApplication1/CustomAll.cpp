@@ -43,6 +43,7 @@ void CCustomAll::OnBnClickedButton1()
     SQLCHAR query[501];
     SQLHDBC hDbc;
     SQLHSTMT hStmt;	// Statement Handle
+    SQLRETURN ret;
 	m_UserQuery.GetWindowText(userquery);
 
     if (DB.db_connect())
@@ -50,8 +51,34 @@ void CCustomAll::OnBnClickedButton1()
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS) {
             sprintf_s((char*)query, 501, userquery);
-            SQLExecDirect(hStmt, query, SQL_NTS);
-            MessageBox("쿼리가 성공적으로 실행되었습니다!");
+            ret=SQLExecDirect(hStmt, query, SQL_NTS);
+
+            if (ret == SQL_SUCCESS || ret == SQL_SUCCESS_WITH_INFO) {
+                MessageBox("쿼리가 성공적으로 실행되었습니다!");
+            }
+            else {
+                // 에러가 발생한 경우
+                CString sqlState;
+                CString message;
+                SQLINTEGER nativeError;
+                SQLSMALLINT messageLength;
+
+                SQLRETURN diagRet;
+                SQLSMALLINT i = 1;
+                do {
+                    diagRet = SQLGetDiagRec(SQL_HANDLE_STMT, hStmt, i, reinterpret_cast<SQLCHAR*>(sqlState.GetBufferSetLength(6)), &nativeError, reinterpret_cast<SQLCHAR*>(message.GetBufferSetLength(SQL_MAX_MESSAGE_LENGTH)), SQL_MAX_MESSAGE_LENGTH, &messageLength);
+                    if (diagRet == SQL_SUCCESS || diagRet == SQL_SUCCESS_WITH_INFO) {
+                        // 에러 정보를 처리하거나 출력합니다.
+                        // sqlState, nativeError, message 등을 사용할 수 있습니다.
+                        // 예를 들어, 에러 메시지를 출력하는 경우:
+                        AfxMessageBox(_T("SQLSTATE: " + sqlState));
+                        //AfxMessageBox(_T("Native Error: ") + (CString)(nativeError));
+                        AfxMessageBox(_T("Message: " + message));
+                    }
+                    i++;
+                } while (diagRet == SQL_SUCCESS || diagRet == SQL_SUCCESS_WITH_INFO);
+            }
+
         }
         else {
             MessageBox("쿼리에 오류가 있습니다.");
@@ -60,5 +87,7 @@ void CCustomAll::OnBnClickedButton1()
         SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
         DB.db_disconnect();
     }
-    MessageBox("DB와 연결이 끊어졌습니다.");
+    else {
+        MessageBox("DB와 연결이 끊어졌습니다.");
+    }
 }
