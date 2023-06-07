@@ -8,6 +8,7 @@
 #include "DeleteTab1.h"
 #include "DeleteTab2.h"
 #include "DeleteTab3.h"
+#include "DeleteTab4.h"
 
 // CDeleteDlg 대화 상자
 
@@ -39,10 +40,10 @@ END_MESSAGE_MAP()
 BOOL CDeleteDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
-	m_Tab.InsertItem(0, _T("공연 정보"));
-	m_Tab.InsertItem(1, _T("공연 리뷰"));
-	m_Tab.InsertItem(2, _T("공연장"));
-	m_Tab.InsertItem(3, _T("내 리뷰"));
+	m_Tab.InsertItem(0, _T("공연 정보(관리자)"));
+	m_Tab.InsertItem(1, _T("내 리뷰"));
+	m_Tab.InsertItem(2, _T("공연장(관리자)"));
+	m_Tab.InsertItem(3, _T("전체 리뷰(관리자)"));
 
 	m_Tab.SetCurSel(0);
 
@@ -64,6 +65,11 @@ BOOL CDeleteDlg::OnInitDialog()
 	pDlg3->MoveWindow(0, 25, rect.Width(), rect.Height());
 	pDlg3->ShowWindow(SW_HIDE);
 
+	pDlg4 = new CDeleteTab3;
+	pDlg4->Create(IDD_DELETE_DLG3, &m_Tab);
+	pDlg4->MoveWindow(0, 25, rect.Width(), rect.Height());
+	pDlg4->ShowWindow(SW_HIDE);
+
 	return TRUE;
 }
 
@@ -76,16 +82,25 @@ void CDeleteDlg::OnTcnSelchangeTab1(NMHDR* pNMHDR, LRESULT* pResult)
 		pDlg1->ShowWindow(SW_SHOW);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_HIDE);
+		pDlg4->ShowWindow(SW_HIDE);
 		break;
 	case 1:
 		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_SHOW);
 		pDlg3->ShowWindow(SW_HIDE);
+		pDlg4->ShowWindow(SW_HIDE);
 		break;
 	case 2:
 		pDlg1->ShowWindow(SW_HIDE);
 		pDlg2->ShowWindow(SW_HIDE);
 		pDlg3->ShowWindow(SW_SHOW);
+		pDlg4->ShowWindow(SW_HIDE);
+		break;
+	case 3:
+		pDlg1->ShowWindow(SW_HIDE);
+		pDlg2->ShowWindow(SW_HIDE);
+		pDlg3->ShowWindow(SW_HIDE);
+		pDlg4->ShowWindow(SW_SHOW);
 		break;
 	}
 	*pResult = 0;

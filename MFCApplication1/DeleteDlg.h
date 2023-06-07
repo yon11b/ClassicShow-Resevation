@@ -4,6 +4,7 @@
 class CDeleteTab1;
 class CDeleteTab2;
 class CDeleteTab3;
+class CDeleteTab4;
 
 // CDeleteDlg 대화 상자
 
@@ -18,6 +19,7 @@ public:
 	CDeleteTab1* pDlg1;
 	CDeleteTab2* pDlg2;
 	CDeleteTab3* pDlg3;
+	CDeleteTab4* pDlg4;
 
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME

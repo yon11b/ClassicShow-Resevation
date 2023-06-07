@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "afxdialogex.h"
+#include "DBConnect.h"
 
 
 // CDeleteTab4 대화 상자
@@ -18,7 +19,13 @@ public:
 #endif
 
 protected:
+	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
 	DECLARE_MESSAGE_MAP()
+public:
+	afx_msg void OnBnClickedButton1();
+	CListCtrl m_ListCtrl;
+	CEdit m_ReviewNo;
+	CDBConnect DB;
 };

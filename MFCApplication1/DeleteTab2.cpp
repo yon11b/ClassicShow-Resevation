@@ -131,6 +131,6 @@ void CDeleteTab2::OnBnClickedButton1()
         DB.db_disconnect();
     }
     else {
-        MessageBox("공연 정보를 불러오는데 실패했습니다.");
+        MessageBox("리뷰 정보를 불러오는데 실패했습니다.");
     }
 }

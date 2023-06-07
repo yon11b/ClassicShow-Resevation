@@ -104,7 +104,6 @@ void CDeleteTab3::OnBnClickedButton1()
     SQLHDBC hDbc;
     SQLHSTMT hStmt; // Statement Handle
     SQLCHAR query[101];
-    CString showno;
 
     if (DB.db_connect()) {
         hDbc = DB.hDbc;
@@ -113,11 +112,21 @@ void CDeleteTab3::OnBnClickedButton1()
         {
             sprintf_s((char*)query, 101, "DELETE FROM CONCERTHALL WHERE HALLNO='%s'", showno);
             MessageBox((char*)query);
-            SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
+
+
+            SQLRETURN ret = SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
+
+            // 에러 메시지 처리
+            if (ret != SQL_SUCCESS && ret != SQL_SUCCESS_WITH_INFO) {
+                MessageBox("해당 공연장을 사용하고 있어서 삭제가 불가능합니다.");
+            }
+            else {
+                MessageBox("성공적으로 공연장을 삭제했습니다.");
+            }
+
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
 
-            MessageBox("성공적으로 공연장을 삭제했습니다.");
         }
         DB.db_disconnect();
     }
