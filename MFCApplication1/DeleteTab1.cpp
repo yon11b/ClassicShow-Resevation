@@ -110,7 +110,8 @@ void CDeleteTab1::OnBnClickedButton2()
         m_ShowNo.GetWindowText(showno);
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 101, "DELETE FROM SHOW WHERE REVIEWNO='%s'", showno);
+            sprintf_s((char*)query, 101, "DELETE FROM SHOW WHERE SHOWNO='%s'", showno);
+            MessageBox((char*)query);
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
             SQLCloseCursor(hStmt);
             SQLFreeHandle(SQL_HANDLE_STMT, hStmt);

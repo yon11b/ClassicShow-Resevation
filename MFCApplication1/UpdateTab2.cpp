@@ -8,7 +8,6 @@
 
 
 // CUpdateTab2 대화 상자
-
 IMPLEMENT_DYNAMIC(CUpdateTab2, CDialogEx)
 
 CUpdateTab2::CUpdateTab2(CWnd* pParent /*=nullptr*/)
@@ -25,11 +24,12 @@ void CUpdateTab2::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_LIST2, m_ListCtrl);
+	DDX_Control(pDX, IDC_EDIT1, m_edit);
 }
 
 
 BEGIN_MESSAGE_MAP(CUpdateTab2, CDialogEx)
-
+	ON_NOTIFY(NM_DBLCLK, IDC_LIST2, &CUpdateTab2::OnDblclkList2)
 END_MESSAGE_MAP()
 
 
@@ -37,19 +37,19 @@ END_MESSAGE_MAP()
 BOOL CUpdateTab2::OnInitDialog() {
 	CDialogEx::OnInitDialog();
 
-	m_ListCtrl.DeleteAllItems();
+	m_edit.ShowWindow(SW_HIDE);
+
 	// 표 틀 생성
 	CRect rt;
 	m_ListCtrl.GetWindowRect(&rt);
 	m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.05);
 	m_ListCtrl.InsertColumn(1, TEXT("제목"), LVCFMT_CENTER, rt.Width() * 0.4);
-	m_ListCtrl.InsertColumn(2, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.1);
-	m_ListCtrl.InsertColumn(3, TEXT("홀"), LVCFMT_CENTER, rt.Width() * 0.1);
-	m_ListCtrl.InsertColumn(4, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.2);
-	m_ListCtrl.InsertColumn(5, TEXT("시야"), LVCFMT_CENTER, rt.Width() * 0.05);
-	m_ListCtrl.InsertColumn(6, TEXT("소리"), LVCFMT_CENTER, rt.Width() * 0.05);
-	m_ListCtrl.InsertColumn(7, TEXT("좌석총평"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(2, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.15);
+	m_ListCtrl.InsertColumn(3, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.1);
+	m_ListCtrl.InsertColumn(4, TEXT("시야"), LVCFMT_CENTER, rt.Width() * 0.1);
+	m_ListCtrl.InsertColumn(5, TEXT("소리"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(6, TEXT("좌석총평"), LVCFMT_CENTER, rt.Width() * 0.15);
 
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SQLHDBC hDbc;
@@ -62,21 +62,21 @@ BOOL CUpdateTab2::OnInitDialog() {
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			sprintf_s((char*)query, 201, "SELECT DETAIL, HALLNAME, ROOMNAME, SEATNUM, SOUND, [VIEW], TOTAL FROM REVIEW R, CONCERTHALL C WHERE R.HALLNUM = C.HALLNO AND R.TOTAL >= '%s'", score);
+			sprintf_s((char*)query, 201, "SELECT REVIEWNO, DETAIL, SEATNUM, HALLNUM, SOUND, [VIEW], TOTAL FROM REVIEW");
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 			CString str;
+			SQLCHAR reviewno[10];
 			SQLCHAR title[100];
-			SQLCHAR hallname[100];
-			SQLCHAR roomname[100];
 			SQLCHAR seatnum[30];
+			SQLCHAR hallnum[100];
 			SQLCHAR sound[30];
 			SQLCHAR view[30];
 			SQLCHAR total[30];
 
-			SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
-			SQLBindCol(hStmt, 2, SQL_C_CHAR, hallname, 100, NULL);
-			SQLBindCol(hStmt, 3, SQL_C_CHAR, roomname, 100, NULL);
-			SQLBindCol(hStmt, 4, SQL_C_CHAR, seatnum, 30, NULL);
+			SQLBindCol(hStmt, 1, SQL_C_CHAR, reviewno, 10, NULL);
+			SQLBindCol(hStmt, 2, SQL_C_CHAR, title, 100, NULL);
+			SQLBindCol(hStmt, 3, SQL_C_CHAR, seatnum, 100, NULL);
+			SQLBindCol(hStmt, 4, SQL_C_CHAR, hallnum, 100, NULL);
 			SQLBindCol(hStmt, 5, SQL_C_CHAR, sound, 30, NULL);
 			SQLBindCol(hStmt, 6, SQL_C_CHAR, view, 30, NULL);
 			SQLBindCol(hStmt, 7, SQL_C_CHAR, total, 30, NULL);
@@ -87,14 +87,13 @@ BOOL CUpdateTab2::OnInitDialog() {
 			{
 				num = m_ListCtrl.GetItemCount();
 				str.Format(_T("%d"), num);
-				m_ListCtrl.InsertItem(num, str);
+				m_ListCtrl.InsertItem(num, (CString)reviewno);
 				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)hallname, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)roomname, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)seatnum, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 5, LVIF_TEXT, (CString)sound, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 6, LVIF_TEXT, (CString)view, NULL, NULL, NULL, NULL);
-				m_ListCtrl.SetItem(num, 7, LVIF_TEXT, (CString)total, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)hallnum, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)seatnum, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)sound, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 5, LVIF_TEXT, (CString)view, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 6, LVIF_TEXT, (CString)total, NULL, NULL, NULL, NULL);
 			}
 			SQLCloseCursor(hStmt);
 			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
@@ -114,19 +113,25 @@ CString CUpdateTab2::GetColumnName(int columnIndex)
 	switch (columnIndex)
 	{
 	case 0:
-		columnName = _T("ID");
+		columnName = _T("REVIEWNO");
 		break;
 	case 1:
-		columnName = _T("TITLE");
+		columnName = _T("DETAIL ");
 		break;
 	case 2:
-		columnName = _T("MUSICIAN");
+		columnName = _T("HALLNUM");
 		break;
 	case 3:
-		columnName = _T("COMPOSER");
+		columnName = _T("SEATNUM");
 		break;
 	case 4:
-		columnName = _T("DATE");
+		columnName = _T("VIEW");
+		break;
+	case 5:
+		columnName = _T("SOUND");
+		break;
+	case 6:
+		columnName = _T("TOTAL");
 		break;
 	default:
 		break;
@@ -134,10 +139,11 @@ CString CUpdateTab2::GetColumnName(int columnIndex)
 	return columnName;
 }
 
-void CUpdateTab2::OnNMDblclkList2(NMHDR* pNMHDR, LRESULT* pResult)
+void CUpdateTab2::OnDblclkList2(NMHDR* pNMHDR, LRESULT* pResult)
 {
 	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	MessageBox("Clicked!!");
 	iSavedItem = pNMItemActivate->iItem;
 	iSavedSubitem = pNMItemActivate->iSubItem;
 
@@ -175,6 +181,7 @@ BOOL CUpdateTab2::PreTranslateMessage(MSG* pMsg)
 
 				// 수정된 값을 데이터베이스에 반영
 				CString columnName = GetColumnName(iSavedSubitem); // 열 이름 가져오기
+				MessageBox(columnName);
 				CString newValue = str; // 새로운 값
 				CString primaryKey = m_ListCtrl.GetItemText(iSavedItem, 0); // 선택된 항목의 기본 키 값 (ID)
 
@@ -183,16 +190,15 @@ BOOL CUpdateTab2::PreTranslateMessage(MSG* pMsg)
 				SQLHDBC hDbc;
 				SQLHSTMT hStmt;
 				SQLCHAR query[200];
-				int showno;
+				int reviewno;
 
 				if (DB.db_connect())
 				{
 					hDbc = DB.hDbc;
 					if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 					{
-						showno = _ttoi(primaryKey) + 1;
-						sprintf_s((char*)query, 200, "UPDATE SHOW SET %s = '%s' WHERE SHOWNO = %d",
-							columnName, newValue, showno);
+						reviewno = _ttoi(primaryKey);
+						sprintf_s((char*)query, 200, "UPDATE REVIEW SET %s = '%s' WHERE REVIEWNO = %d", columnName, newValue, reviewno);
 						MessageBox((char*)query);
 						if (SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS) == SQL_SUCCESS)
 						{
@@ -223,4 +229,3 @@ BOOL CUpdateTab2::PreTranslateMessage(MSG* pMsg)
 
 	return CDialog::PreTranslateMessage(pMsg);
 }
-

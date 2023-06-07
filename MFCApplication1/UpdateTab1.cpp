@@ -11,7 +11,7 @@
 IMPLEMENT_DYNAMIC(CUpdateTab1, CDialogEx)
 
 CUpdateTab1::CUpdateTab1(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_UPDATE_DLG1, pParent)
+    : CDialogEx(IDD_UPDATE_DLG1, pParent)
 {
 
 }
@@ -22,8 +22,9 @@ CUpdateTab1::~CUpdateTab1()
 
 void CUpdateTab1::DoDataExchange(CDataExchange* pDX)
 {
-	CDialogEx::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_LIST2, m_ListCtrl);
+    CDialogEx::DoDataExchange(pDX);
+    DDX_Control(pDX, IDC_LIST2, m_ListCtrl);
+    DDX_Control(pDX, IDC_EDIT1, m_edit);
 }
 
 BEGIN_MESSAGE_MAP(CUpdateTab1, CDialogEx)
@@ -33,10 +34,11 @@ END_MESSAGE_MAP()
 
 // CUpdateTab1 메시지 처리기
 BOOL CUpdateTab1::OnInitDialog() {
-	CDialogEx::OnInitDialog();
+    CDialogEx::OnInitDialog();
 
-    m_ListCtrl.DeleteAllItems();
-	// 표 틀 생성
+    m_edit.ShowWindow(SW_HIDE);
+
+    // 표 틀 생성
     CRect rt;
     m_ListCtrl.GetWindowRect(&rt);
     m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
@@ -45,7 +47,7 @@ BOOL CUpdateTab1::OnInitDialog() {
     m_ListCtrl.InsertColumn(2, TEXT("연주자"), LVCFMT_CENTER, rt.Width() * 0.25);
     m_ListCtrl.InsertColumn(3, TEXT("작곡가"), LVCFMT_CENTER, rt.Width() * 0.15);
     m_ListCtrl.InsertColumn(4, TEXT("날짜"), LVCFMT_CENTER, rt.Width() * 0.2);
-    
+
     SQLHDBC hDbc;
     SQLHSTMT hStmt; // Statement Handle
     SQLCHAR query[101];
@@ -54,27 +56,27 @@ BOOL CUpdateTab1::OnInitDialog() {
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 101, "SELECT TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
+            sprintf_s((char*)query, 101, "SELECT SHOWNO, TITLE, MUSICIAN, COMPOSER, [DATE] FROM SHOW");
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
+            SQLCHAR showno[10];
             SQLCHAR title[100];
             SQLCHAR musician[100];
             SQLCHAR composer[100];
             SQLCHAR date[100];
 
-            SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
-            SQLBindCol(hStmt, 2, SQL_C_CHAR, musician, 100, NULL);
-            SQLBindCol(hStmt, 3, SQL_C_CHAR, composer, 100, NULL);
-            SQLBindCol(hStmt, 4, SQL_C_CHAR, date, 100, NULL);
+            SQLBindCol(hStmt, 1, SQL_C_CHAR, showno, 10, NULL);
+            SQLBindCol(hStmt, 2, SQL_C_CHAR, title, 100, NULL);
+            SQLBindCol(hStmt, 3, SQL_C_CHAR, musician, 100, NULL);
+            SQLBindCol(hStmt, 4, SQL_C_CHAR, composer, 100, NULL);
+            SQLBindCol(hStmt, 5, SQL_C_CHAR, date, 100, NULL);
 
             int num;
-            CString str;
             // 공연 데이터 나열
             while (SQLFetch(hStmt) != SQL_NO_DATA)
             {
-                num = m_ListCtrl.GetItemCount();
-                str.Format(_T("%d"), num);
-                m_ListCtrl.InsertItem(num, str);
+                num = m_ListCtrl.GetItemCount();                
+                m_ListCtrl.InsertItem(num, (CString)showno);
                 m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
                 m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)musician, NULL, NULL, NULL, NULL);
                 m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)composer, NULL, NULL, NULL, NULL);
@@ -121,6 +123,7 @@ CString CUpdateTab1::GetColumnName(int columnIndex)
 void CUpdateTab1::OnNMDblclkList2(NMHDR* pNMHDR, LRESULT* pResult)
 {
     LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+
     // TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
     iSavedItem = pNMItemActivate->iItem;
     iSavedSubitem = pNMItemActivate->iSubItem;
@@ -174,9 +177,9 @@ BOOL CUpdateTab1::PreTranslateMessage(MSG* pMsg)
                     hDbc = DB.hDbc;
                     if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
                     {
-                        showno= _ttoi(primaryKey) + 1;
+                        showno = _ttoi(primaryKey);
                         sprintf_s((char*)query, 200, "UPDATE SHOW SET %s = '%s' WHERE SHOWNO = %d",
-                            columnName, newValue, showno);
+                            columnName, newValue, showno);                        
                         if (SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS) == SQL_SUCCESS)
                         {
                             MessageBox(_T("데이터베이스 업데이트 성공"));
@@ -194,7 +197,7 @@ BOOL CUpdateTab1::PreTranslateMessage(MSG* pMsg)
                     MessageBox(_T("데이터베이스 연결 실패"));
                 }
                 GetDlgItem(IDC_EDIT1)->SetWindowPos(NULL, 0, 0, 0, 0, SWP_HIDEWINDOW);
-            }             
+            }
             return TRUE;
         }
 

@@ -41,8 +41,8 @@ BOOL CDeleteDlg::OnInitDialog()
 	CDialogEx::OnInitDialog();
 	m_Tab.InsertItem(0, _T("공연 정보"));
 	m_Tab.InsertItem(1, _T("공연 리뷰"));
-	m_Tab.InsertItem(2, _T("예매 내역"));
-	m_Tab.InsertItem(3, _T("회원 탈퇴"));
+	m_Tab.InsertItem(2, _T("공연장"));
+	m_Tab.InsertItem(3, _T("내 리뷰"));
 
 	m_Tab.SetCurSel(0);
 

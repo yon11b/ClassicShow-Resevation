@@ -40,9 +40,10 @@ BOOL CSchemaTab7::OnInitDialog() {
 
     m_ListCtrl.GetWindowRect(&rt);
     m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
-    m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.2);
-    m_ListCtrl.InsertColumn(1, TEXT("공연장소"), LVCFMT_CENTER, rt.Width() * 0.4);
-    m_ListCtrl.InsertColumn(2, TEXT("홀 이름"), LVCFMT_CENTER, rt.Width() * 0.4);
+    m_ListCtrl.InsertColumn(0, TEXT("계좌번호"), LVCFMT_CENTER, rt.Width() * 0.2);
+    m_ListCtrl.InsertColumn(1, TEXT("사용자"), LVCFMT_CENTER, rt.Width() * 0.3);
+    m_ListCtrl.InsertColumn(2, TEXT("잔액"), LVCFMT_CENTER, rt.Width() * 0.2);
+    m_ListCtrl.InsertColumn(3, TEXT("비밀번호"), LVCFMT_CENTER, rt.Width() * 0.3);
 
     return TRUE;
 }
@@ -58,16 +59,18 @@ void CSchemaTab7::OnBnClickedButton1()
         hDbc = DB.hDbc;
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
-            sprintf_s((char*)query, 101, "SELECT * FROM RESERVATE");
+            sprintf_s((char*)query, 101, "SELECT * FROM CARD");
             SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 
-            SQLCHAR hallno[10];
-            SQLCHAR hallname[100];
-            SQLCHAR roomname[100];
+            SQLCHAR accountno[10];
+            SQLCHAR userid[100];
+            SQLCHAR balance[100];
+            SQLCHAR cardpw[100];
 
-            SQLBindCol(hStmt, 1, SQL_C_CHAR, hallno, 10, NULL);
-            SQLBindCol(hStmt, 2, SQL_C_CHAR, hallname, 100, NULL);
-            SQLBindCol(hStmt, 3, SQL_C_CHAR, roomname, 100, NULL);
+            SQLBindCol(hStmt, 1, SQL_C_CHAR, accountno, 10, NULL);
+            SQLBindCol(hStmt, 2, SQL_C_CHAR, userid, 100, NULL);
+            SQLBindCol(hStmt, 3, SQL_C_CHAR, balance, 100, NULL);
+            SQLBindCol(hStmt, 4, SQL_C_CHAR, cardpw, 100, NULL);
 
             int num;
             CString str;
@@ -76,9 +79,10 @@ void CSchemaTab7::OnBnClickedButton1()
             {
                 num = m_ListCtrl.GetItemCount();
                 str.Format(_T("%d"), num);
-                m_ListCtrl.InsertItem(num, (CString)hallno);
-                m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)hallname, NULL, NULL, NULL, NULL);
-                m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)roomname, NULL, NULL, NULL, NULL);
+                m_ListCtrl.InsertItem(num, (CString)accountno);
+                m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)userid, NULL, NULL, NULL, NULL);
+                m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)balance, NULL, NULL, NULL, NULL);
+                m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)cardpw, NULL, NULL, NULL, NULL);
             }
 
             SQLCloseCursor(hStmt);
@@ -87,6 +91,6 @@ void CSchemaTab7::OnBnClickedButton1()
         DB.db_disconnect();
     }
     else {
-        MessageBox("예매 정보를 불러오는데 실패했습니다.");
+        MessageBox("카드 정보를 불러오는데 실패했습니다.");
     }
 }

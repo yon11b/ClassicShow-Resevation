@@ -40,8 +40,7 @@ BOOL CUpdateDlg::OnInitDialog() {
     CDialogEx::OnInitDialog();
     m_Tab.InsertItem(0, _T("공연안내"));
     m_Tab.InsertItem(1, _T("공연리뷰"));
-    m_Tab.InsertItem(2, _T("예매내역"));
-    m_Tab.InsertItem(3, _T("마이페이지"));
+    m_Tab.InsertItem(2, _T("마이페이지"));
 
     m_Tab.SetCurSel(0);
 

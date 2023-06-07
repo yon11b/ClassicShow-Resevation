@@ -27,6 +27,7 @@ public:
 	CListCtrl m_ListCtrl;
 	CString GetColumnName(int columnIndex);
 	int iSavedItem, iSavedSubitem;
-	afx_msg void OnNMDblclkList2(NMHDR* pNMHDR, LRESULT* pResult);
 	BOOL PreTranslateMessage(MSG* pMsg);
+	afx_msg void OnDblclkList2(NMHDR* pNMHDR, LRESULT* pResult);
+	CEdit m_edit;
 };

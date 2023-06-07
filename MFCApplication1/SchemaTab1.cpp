@@ -105,7 +105,6 @@ void CSchemaTab1::OnBnClickedButton1()
 			SQLBindCol(hStmt, 12, SQL_C_CHAR, priceb, 100, NULL);
 			SQLBindCol(hStmt, 13, SQL_C_CHAR, hallno, 100, NULL);
 
-
 			int num;
 			CString str;
 			// 공연 데이터 나열

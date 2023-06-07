@@ -30,4 +30,5 @@ public:
 	int iSavedItem, iSavedSubitem;
 	afx_msg void OnNMDblclkList2(NMHDR* pNMHDR, LRESULT* pResult);
 	BOOL PreTranslateMessage(MSG* pMsg);
+	CEdit m_edit;
 };

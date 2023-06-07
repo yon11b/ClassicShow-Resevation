@@ -43,8 +43,9 @@
 #define IDD_CUSTOM_DLG1                 217
 #define IDD_CUSTOM_DLG2                 218
 #define IDD_CUSTOM_DLG3                 222
-#define IDD_DIALOG5                     224
 #define IDD_CUSTOM_DLG4                 224
+#define IDD_CUSTOM_DLG5                 226
+#define IDD_DELETE_DLG4                 228
 #define IDC_SUBMIT                      1000
 #define IDC_LOGIN                       1001
 #define IDS_TITLE                       1002
@@ -109,6 +110,7 @@
 #define IDC_BTN                         1063
 #define IDC_CK_SEATINFO                 1132
 #define IDC_BUTTON6                     1133
+#define IDC_TAB2                        1135
 #define IDC_BUTTON185                   1219
 #define IDC_BUTTON186                   1220
 #define IDC_BUTTON187                   1221
@@ -283,9 +285,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        226
+#define _APS_NEXT_RESOURCE_VALUE        230
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1134
+#define _APS_NEXT_CONTROL_VALUE         1136
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

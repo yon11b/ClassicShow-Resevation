@@ -43,13 +43,13 @@ BOOL CTab2::OnInitDialog() {
 	m_ListCtrl.GetWindowRect(&rt);
 	m_ListCtrl.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_ListCtrl.InsertColumn(0, TEXT("번호"), LVCFMT_CENTER, rt.Width() * 0.05);
-	m_ListCtrl.InsertColumn(1, TEXT("제목"), LVCFMT_CENTER, rt.Width() * 0.4);
-	m_ListCtrl.InsertColumn(2, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.2);
-	m_ListCtrl.InsertColumn(3, TEXT("홀"), LVCFMT_CENTER, rt.Width() * 0.1);
-	m_ListCtrl.InsertColumn(4, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.1);	
-	m_ListCtrl.InsertColumn(5, TEXT("시야"), LVCFMT_CENTER, rt.Width() * 0.05);
-	m_ListCtrl.InsertColumn(6, TEXT("소리"), LVCFMT_CENTER, rt.Width() * 0.05);
-	m_ListCtrl.InsertColumn(7, TEXT("좌석총평"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(2, TEXT("감상평"), LVCFMT_CENTER, rt.Width() * 0.3);
+	m_ListCtrl.InsertColumn(3, TEXT("공연장"), LVCFMT_CENTER, rt.Width() * 0.1);
+	m_ListCtrl.InsertColumn(4, TEXT("홀"), LVCFMT_CENTER, rt.Width() * 0.1);
+	m_ListCtrl.InsertColumn(5, TEXT("좌석"), LVCFMT_CENTER, rt.Width() * 0.1);	
+	m_ListCtrl.InsertColumn(6, TEXT("시야"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(7, TEXT("소리"), LVCFMT_CENTER, rt.Width() * 0.05);
+	m_ListCtrl.InsertColumn(8, TEXT("좌석총평"), LVCFMT_CENTER, rt.Width() * 0.15);
 
 	return TRUE;
 }
@@ -59,7 +59,7 @@ void CTab2::OnBnClickedBtnSelectreview()
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	SQLHDBC hDbc;
 	SQLHSTMT hStmt;	// Statement Handle
-	SQLCHAR query[201];
+	SQLCHAR query[301];
 	CString score;
 	CString seat;
 
@@ -69,10 +69,10 @@ void CTab2::OnBnClickedBtnSelectreview()
 		hDbc = DB.hDbc;
 		if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
 		{
-			sprintf_s((char*)query, 201, "SELECT DETAIL, HALLNAME, ROOMNAME, SEATNUM, SOUND, [VIEW], TOTAL FROM REVIEW R, CONCERTHALL C WHERE R.HALLNUM = C.HALLNO AND R.TOTAL >= '%s'", score);			
+			sprintf_s((char*)query, 301, "SELECT  R.DETAIL, C.HALLNAME, C.ROOMNAME, R.SEATNUM, S.CLASS, R.SOUND, R.[VIEW], R.TOTAL FROM REVIEW R, CONCERTHALL C, SEAT S WHERE R.HALLNUM = C.HALLNO AND S.HALLNO=C.HALLNO AND S.SEATNO=R.SEATNUM AND R.TOTAL >= '%s'", score);			
 			SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 			CString str;
-			SQLCHAR title[100];
+			SQLCHAR eval[100];
 			SQLCHAR hallname[100];
 			SQLCHAR roomname[100];
 			SQLCHAR seatnum[30];
@@ -80,7 +80,7 @@ void CTab2::OnBnClickedBtnSelectreview()
 			SQLCHAR view[30];
 			SQLCHAR total[30];
 
-			SQLBindCol(hStmt, 1, SQL_C_CHAR, title, 100, NULL);
+			SQLBindCol(hStmt, 1, SQL_C_CHAR, eval, 100, NULL);
 			SQLBindCol(hStmt, 2, SQL_C_CHAR, hallname, 100, NULL);
 			SQLBindCol(hStmt, 3, SQL_C_CHAR, roomname, 100, NULL);
 			SQLBindCol(hStmt, 4, SQL_C_CHAR, seatnum, 30, NULL);
@@ -95,7 +95,7 @@ void CTab2::OnBnClickedBtnSelectreview()
 				num = m_ListCtrl.GetItemCount();
 				str.Format(_T("%d"), num);
 				m_ListCtrl.InsertItem(num, str);
-				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)title, NULL, NULL, NULL, NULL);
+				m_ListCtrl.SetItem(num, 1, LVIF_TEXT, (CString)eval, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 2, LVIF_TEXT, (CString)hallname, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 3, LVIF_TEXT, (CString)roomname, NULL, NULL, NULL, NULL);
 				m_ListCtrl.SetItem(num, 4, LVIF_TEXT, (CString)seatnum, NULL, NULL, NULL, NULL);
