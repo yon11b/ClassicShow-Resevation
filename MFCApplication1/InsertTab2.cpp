@@ -124,11 +124,10 @@ void CInsertTab2::OnBnClickedButton1()
 
             SQLRETURN ret1 = SQLFetch(hStmt1);
             if (ret1 == SQL_SUCCESS || ret1 == SQL_SUCCESS_WITH_INFO) {
-                MessageBox("Seatno과 Hallno을 구했습니다.");
+                //MessageBox("Seatno과 Hallno을 구했습니다.");
                 isSeat = 1;
             }
             else {
-                MessageBox("존재하지 않는 좌석입니다.");
                 isSeat = 0;
             }
         }
@@ -148,6 +147,7 @@ void CInsertTab2::OnBnClickedButton1()
             sprintf_s((char*)query, 301, "INSERT INTO REVIEW(SOUND, [VIEW], DETAIL, USERID, HALLNUM, \
             SEATNUM, TOTAL) VALUES('%s','%s','%s','%s', %d, %d,'%s')", sound, view, detail, userid, hallno, seatno, total);
             SQLExecDirect(hStmt2, query, SQL_NTS);
+            MessageBox("리뷰를 생성하였습니다.");
         }
         SQLCloseCursor(hStmt2);
         SQLFreeHandle(SQL_HANDLE_STMT, hStmt2);

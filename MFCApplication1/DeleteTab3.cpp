@@ -111,8 +111,6 @@ void CDeleteTab3::OnBnClickedButton1()
         if (SQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt) == SQL_SUCCESS)
         {
             sprintf_s((char*)query, 101, "DELETE FROM CONCERTHALL WHERE HALLNO='%s'", showno);
-            MessageBox((char*)query);
-
 
             SQLRETURN ret = SQLExecDirect(hStmt, (SQLCHAR*)query, SQL_NTS);
 

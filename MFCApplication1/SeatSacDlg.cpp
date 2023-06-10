@@ -137,6 +137,8 @@ void CSeatSacDlg::OnBtnClick(UINT ullD)
 			else if (1350 <= ullD && ullD <= 1399) {
 				seatinfo = "좌석번호: " + seatno + " / 가격 :" + (CString)price_b;
 			}
+
+			MessageBox(seatinfo);
 			SQLCloseCursor(hStmt);
 			SQLFreeHandle(SQL_HANDLE_STMT, hStmt);
 		}
