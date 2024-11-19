@@ -16,6 +16,10 @@ DB: SSMS(SQL Server Management Studio)
 
 ### 실행화면
 
+**시작화면**
+
+![그림8](https://github.com/user-attachments/assets/5efeaf7c-180c-41df-8d78-b3edfd4b4eab)
+
 **공연정보**
 
 ![그림3](https://github.com/user-attachments/assets/2335c486-1606-4751-8ef0-87473c78f67a)
@@ -24,6 +28,10 @@ DB: SSMS(SQL Server Management Studio)
 
 ![그림1](https://github.com/user-attachments/assets/3509e1a0-0619-4fb1-a437-19fde6c63c16)
 
+
+**좌석평조회**
+
+![그림9](https://github.com/user-attachments/assets/90922e18-3b1c-4146-b548-079eae44125a)
 
 **리뷰 조회**
 
